@@ -1,0 +1,35 @@
+<?php
+// Text
+$_['text_new_subject']          = '%s - objednávka %s';
+$_['text_new_greeting']         = 'Děkujeme za váš zájem o %s zboží. Vaše objednávka byla přijata a po přijetí platby bude zpracována.';
+$_['text_new_received']         = 'Obdrželi jste novou objednávku.';
+$_['text_new_link']             = 'Pro zobrazení objednávky klikněte na odkaz níže:';
+$_['text_new_order_detail']     = 'Detail objednávky';
+$_['text_new_instruction']      = 'Pokyny';
+$_['text_new_order_id']         = 'Číslo objednávky:';
+$_['text_new_date_added']       = 'Datum vytvoření:';
+$_['text_new_order_status']     = 'Stav objednávky:';
+$_['text_new_payment_method']   = 'Způsob platby:';
+$_['text_new_shipping_method']  = 'Způsob dopravy:';
+$_['text_new_email']  			= 'E-Mail:';
+$_['text_new_telephone']  		= 'Telefon:';
+$_['text_new_ip']  				= 'IP adresa:';
+$_['text_new_payment_address']  = 'Platební adresa';
+$_['text_new_shipping_address'] = 'Doručovací adresa';
+$_['text_new_products']         = 'Produkty';
+$_['text_new_product']          = 'Produkt';
+$_['text_new_model']            = 'Model';
+$_['text_new_quantity']         = 'Množství';
+$_['text_new_price']            = 'Cena';
+$_['text_new_order_total']      = 'Objednávky celkem';
+$_['text_new_total']            = 'Celkem';
+$_['text_new_download']         = 'Po přijetí platby vám bude si pomocí odkazu níže můžete zobrazit stáhnutelný obsah:';
+$_['text_new_comment']          = 'Poznámka k vaší objednávce:';
+$_['text_new_footer']           = 'V případě jakýchkoli dotazů nás můžete kontaktovat odpovědí na tento e-mail.';
+$_['text_update_subject']       = '%s - změna stavu objednávky %s';
+$_['text_update_order']         = 'Číslo objednávky:';
+$_['text_update_date_added']    = 'Datum vytvoření objednávky:';
+$_['text_update_order_status']  = 'Stav vaší objednávky byl změněn na:';
+$_['text_update_comment']       = 'Poznámka k vaší objednávce:';
+$_['text_update_link']          = 'Pro zobrazení objednávky klikněte na odkaz níže:';
+$_['text_update_footer']        = 'V případě jakýchkoli dotazů nás můžete kontaktovat odpovědí na tento e-mail.';

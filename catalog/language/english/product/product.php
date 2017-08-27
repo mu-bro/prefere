@@ -1,0 +1,87 @@
+<?php
+$_['textPreorder'] = '* The product is available only for pre-order';
+$_['textPreorderDescr'] = 'The product is available only for pre-order';
+$_['text_search'] = 'Search';
+$_['text_brand'] = 'Brand';
+$_['text_manufacturer'] = 'Brand:';
+$_['text_model'] = 'Product Code:';
+$_['text_reward'] = 'Reward Points:';
+$_['text_points'] = 'Price in reward points:';
+$_['text_stock'] = 'Availability:';
+$_['text_instock'] = 'In Stock';
+$_['text_tax'] = 'Ex Tax:';
+$_['text_discount'] = ' or more ';
+$_['text_option'] = 'Available Options';
+$_['text_minimum'] = 'This product has a minimum quantity of %s';
+$_['text_reviews'] = '%s reviews';
+$_['text_write'] = 'Write a review';
+$_['text_login'] = 'Please <a href="%s">login</a> or <a href="%s">register</a> to review';
+$_['text_no_reviews'] = 'There are no reviews for this product.';
+$_['text_note'] = '<span class="text-danger">Note:</span> HTML is not translated!';
+$_['text_success'] = 'Thank you for your review. It has been submitted to the webmaster for approval.';
+$_['text_related'] = 'Related Products';
+$_['text_tags'] = 'Tags:';
+$_['text_error'] = 'Product not found!';
+$_['text_payment_recurring'] = 'Payment Profile';
+$_['text_trial_description'] = '%s every %d %s(s) for %d payment(s) then';
+$_['text_payment_description'] = '%s every %d %s(s) for %d payment(s)';
+$_['text_payment_cancel'] = '%s every %d %s(s) until canceled';
+$_['text_day'] = 'day';
+$_['text_week'] = 'week';
+$_['text_semi_month'] = 'half-month';
+$_['text_month'] = 'month';
+$_['text_year'] = 'year';
+$_['text_size_title'] = 'Prefere Fleur';
+$_['entry_qty'] = 'Qty';
+$_['entry_name'] = 'Your Name';
+$_['entry_review'] = 'Your Review';
+$_['entry_rating'] = 'Rating';
+$_['entry_good'] = 'Good';
+$_['entry_bad'] = 'Bad'; // Tabs
+$_['tab_description'] = 'Description';
+$_['tab_attribute'] = 'Specification';
+$_['tab_review'] = 'Reviews (%s)';
+$_['error_name'] = 'Warning: Review Name must be between 3 and 25 characters!';
+$_['error_text'] = 'Warning: Review Text must be between 25 and 1000 characters!';
+$_['error_rating'] = 'Warning: Please select a review rating!';
+$_['text_option_descr_49'] = 'В коробке 10-15 роз в зависимости от величины бутона';
+$_['text_option_descr_50'] = 'В коробке 15-19 роз в зависимости от величины бутона';
+$_['text_option_descr_51'] = 'В коробке 25-29 роз в зависимости от величины бутона';
+$_['text_choose_color'] = 'Выберите цвет цветов:';
+$_['entry_fo_button'] = 'Заказ в 1 клик';
+$_['entry_fo_name'] = 'Ваше имя""';
+$_['entry_fo_name_error'] = 'Your name';
+$_['entry_fo_email_error'] = 'Your e-mail';
+$_['entry_fo_phone'] = 'Your phone number';
+$_['entry_fo_phone_error'] = 'Your phone number';
+$_['entry_fo_message'] = 'Comment';
+$_['entry_fo_message_error'] = 'Write your comment to the order or question';
+$_['entry_fo_close'] = 'Закрыть';
+$_['entry_fo_send'] = 'Order';
+$_['entry_fo_send_success'] = '<p>Your order is successfully submitted!</p><p>Our manager will contact you!&nbsp;</p>';
+$_['entry_fo_send_error'] = 'Your order is not submitted!<br>Contact us +420 777 300 971';
+$_['email_subject_fast_order'] = 'Быстрый заказ с Вашего магазина!';
+$_['email_body_fast_order'] = 'Вы получили новый заказ. \n\n" . " Товар: %s \n\n " . " Имя покупателя: %s \n " . " Email покупателя: %s \n " . " Телефон покупателя: %s \n " . " Сообщение:\n %s';
+/* replaced "entry_fo_close" */
+$_["entry_fo_close"] = "Close";
+/* replaced "text_option_descr_62" */
+$_["text_option_descr_62"] = "There are 25 flowers in a box";
+$_["text_option_descr_49"] = "There are 20 roses in a box";
+$_["text_option_descr_50"] = "There are 25-30 roses in a box";
+$_["text_option_descr_51"] = "There are 40 roses in a box";
+$_["text_option_descr_60"] = "There are 50 flowers in a box";
+/* replaced "entry_fo_button" */
+$_["entry_fo_button"] = "Quick order";
+/* replaced "text_choose_color" */ $_["text_choose_color"] = "Choose color ";
+/* replaced "text_option_descr_64" */ $_["text_option_descr_64"] = "There are 20 roses in a box";
+/* replaced "text_option_descr_70" */ $_["text_option_descr_70"] = "There are 9-11 flowers in a box";
+/* replaced "text_option_descr_81" */ $_["text_option_descr_81"] = "There are 15 flowers in a box";
+/* replaced "textPreorder" */ $_["textPreorder"] = "* The product is available only for pre-order";
+/* replaced "text_option_descr_49" */ $_["text_option_descr_49"] = "";
+/* replaced "text_option_descr_50" */ $_["text_option_descr_50"] = "";
+/* replaced "text_option_descr_51" */ $_["text_option_descr_51"] = "";
+/* replaced "text_option_descr_60" */ $_["text_option_descr_60"] = "49 flowers";
+$_['price_prefix']            = 'from';
+$_['txt_video_title']            = 'Take a look to our bouquet\'s video';
+
+?>

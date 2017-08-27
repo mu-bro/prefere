@@ -1,0 +1,81 @@
+<?php
+// Text
+$_['textPreorder'] = '* Букет доступен только для предзаказа';
+$_['textPreorderDescr'] = 'Заказ букет возможен только через 5 дней';
+$_['text_search'] = 'Поиск';
+$_['text_brand'] = 'Производитель';
+$_['text_manufacturer'] = 'Производитель:';
+$_['text_model'] = 'Код товара:';
+$_['text_reward'] = 'Бонусные баллы:';
+$_['text_points'] = 'Цена в Бонусных баллах:';
+$_['text_stock'] = 'Доступность:';
+$_['text_instock'] = 'На складе';
+$_['text_tax'] = 'Без НДС:';
+$_['text_discount'] = ' или более ';
+$_['text_option'] = 'Доступные опции';
+$_['text_minimum'] = 'Минимальное кол-во для заказа этого товара: %s. ';
+$_['text_reviews'] = '%s отзывов';
+$_['text_write'] = 'Написать отзыв';
+$_['text_login'] = 'Пожалуйста <a href="%s"> авторизуйтесь</a> или <a href="%s"> зарегистрируйтесь</a> для просмотра';
+$_['text_no_reviews'] = 'Нет отзывов об этом товаре.';
+$_['text_note'] = '<span class="text-danger">Внимание:</span> HTML не переведен!';
+$_['text_success'] = 'Спасибо за Ваш отзыв. Он был направлен на модерацию.';
+$_['text_related'] = 'Рекомендуемые товары';
+$_['text_tags'] = 'Теги:';
+$_['text_error'] = 'Товар не найден!';
+$_['text_payment_recurring'] = 'Платежные профили';
+$_['text_trial_description'] = '%s каждый %d %sй для %d оплат(ы),';
+$_['text_payment_description'] = '%s каждый %d %s(-и) из %d платежей(-а)';
+$_['text_payment_cancel'] = '%s every %d %s(s) until canceled';
+$_['text_day'] = 'день';
+$_['text_week'] = 'неделя';
+$_['text_semi_month'] = 'полмесяца';
+$_['text_month'] = 'месяц';
+$_['text_year'] = 'год';
+$_['text_size_title'] = 'Prefere Fleur'; // Entry
+$_['entry_qty'] = 'Кол-во';
+$_['entry_name'] = 'Ваше имя:';
+$_['entry_review'] = 'Ваш отзыв';
+$_['entry_rating'] = 'Рейтинг';
+$_['entry_good'] = 'Хорошо';
+$_['entry_bad'] = 'Плохо'; // Tabs
+$_['tab_description'] = 'Описание';
+$_['tab_attribute'] = 'Характеристики';
+$_['tab_review'] = 'Отзывы (%s)'; // Error
+$_['error_name'] = 'Имя должно быть от 3 до 25 символов!';
+$_['error_text'] = 'Текст Отзыва должен быть от 25 до 1000 символов!';
+$_['error_rating'] = 'Пожалуйста поставьте оценку!'; //options
+$_['text_option_descr_49'] = 'В коробке 10-15 роз в зависимости от величины бутона';
+$_['text_option_descr_50'] = 'В коробке 15-19 роз в зависимости от величины бутона';
+$_['text_option_descr_51'] = 'В коробке 25-29 роз в зависимости от величины бутона';
+$_['text_choose_color'] = 'Выберите цвет цветов:'; 
+$_['entry_fo_button'] = 'Rychlá objednávka';
+$_['entry_fo_name'] = 'Ваше имя""';
+$_['entry_fo_name_error'] = 'Vaše jméno';
+$_['entry_fo_email_error'] = 'Email';
+$_['entry_fo_phone'] = 'Telefon';
+$_['entry_fo_phone_error'] = 'Vaš telefon';
+$_['entry_fo_message'] = 'Komentář';
+$_['entry_fo_message_error'] = 'Komentář';
+$_['entry_fo_close'] = 'Zavřít';
+$_['entry_fo_send'] = 'Objednat';
+$_['entry_fo_send_success'] = '<span style=\"color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 22.4px;\">Objednávka úspěšně přijali</span>';
+$_['entry_fo_send_error'] = '';
+$_['email_subject_fast_order'] = 'Быстрый заказ с Вашего магазина!';
+$_['email_body_fast_order'] = 'Вы получили новый заказ. <br/><br/><b>Товар:</b> %s <br/><br/><b>Имя покупателя:</b> %s <br/><b>Email покупателя:</b> %s
+<br/><b>Телефон покупателя:</b> %s <br/><b>Сообщение:</b><br/> %s';
+/* replaced "entry_fo_close" */ $_["entry_fo_close"] = "Закрыть";
+/* replaced "text_option_descr_62" */ $_["text_option_descr_62"] = "В коробке 25 цветов";
+/* replaced "entry_fo_button" */ $_["entry_fo_button"] = "Быстрый заказ";
+/* replaced "text_choose_color" */ $_["text_choose_color"] = "Выберите цвет цветов:";
+/* replaced "text_option_descr_64" */ $_["text_option_descr_64"] = "В коробке 20 роз в зависимости от величины бутона";
+/* replaced "text_option_descr_70" */ $_["text_option_descr_70"] = "В коробке 9-11 цветов в зависимости от величины бутона";
+/* replaced "text_option_descr_81" */ $_["text_option_descr_81"] = "В коробке 15 цветов в зависимости от величины бутона";
+/* replaced "textPreorder" */ $_["textPreorder"] = "* Букет доступен только для предзаказа";
+/* replaced "text_option_descr_49" */ $_["text_option_descr_49"] = "";
+/* replaced "text_option_descr_50" */ $_["text_option_descr_50"] = "";
+/* replaced "text_option_descr_51" */ $_["text_option_descr_51"] = "";
+/* replaced "text_option_descr_60" */ $_["text_option_descr_60"] = "49 цветков";
+$_['price_prefix']            = 'от';
+$_['txt_video_title']            = 'Посмотрите небольшое видео нашего букета:';
+?>

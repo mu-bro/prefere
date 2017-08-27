@@ -1,0 +1,87 @@
+<modification>
+	<name>Language Editor</name>
+	<code>language_editor</code>
+	<version>1.2</version>
+	<author>opencart-templates</author>
+	<link>http://www.opencart-templates.co.uk/language-editor</link>
+  	
+	<file path="system/library/language.php">
+        <operation>
+            <search><![CDATA[$file = DIR_LANGUAGE]]></search>
+		    <ignoreif><![CDATA[$file = $this->path]]></ignoreif>
+            <add position="replace"><![CDATA[$file = $this->path]]></add>
+        </operation>
+        <operation>
+            <search index="0"><![CDATA[private $directory;]]></search>
+            <ignoreif><![CDATA[private $path = DIR_LANGUAGE;]]></ignoreif>
+            <add position="after"><![CDATA[private $path = DIR_LANGUAGE;]]></add>
+        </operation>
+        <operation>
+            <search index="0"><![CDATA[public function get($key]]></search>
+            <ignoreif><![CDATA[public function setPath($path)]]></ignoreif>
+            <add position="before"><![CDATA[	public function setPath($path) {
+		if (!is_dir($path)) {
+			trigger_error('Error: check path exists: '.$path);
+			exit;
+		}
+		
+		$this->path = $path;
+	} 
+	]]></add>
+        </operation>
+        <operation>
+            <search index="0"><![CDATA[public function load(]]></search>
+            <ignoreif><![CDATA[public function load_full(]]></ignoreif>
+            <add position="before"><![CDATA[	public function load_full($filename, $loadOverwrite = true) {
+        $_ = array();
+        
+        // Default
+		$file = $this->path . $this->default . '/' . $filename . '.php';
+				
+		if (file_exists($file)) {						
+			require(modification($file));
+					
+			$this->data = array_merge($this->data, $_);
+
+            if ($loadOverwrite) {
+				$file = $this->path . $this->directory . '/' . $filename . '_.php';	
+					
+				if (file_exists($file)) {				
+					require(modification($file));	
+						
+					$this->data = array_merge($this->data, $_);
+				}
+			}
+		}
+		
+		// Standard		
+		$file = $this->path . $this->directory . '/' . $filename . '.php';
+		
+		if (file_exists($file)) {
+			require(modification($file));
+					
+			$this->data = array_merge($this->data, $_);
+
+            if ($loadOverwrite) {
+				$file = $this->path . $this->directory . '/' . $filename . '_.php';	
+					
+				if (file_exists($file)) {	
+					require(modification($file));	
+						
+					$this->data = array_merge($this->data, $_);
+				}
+			}
+		}
+
+		return $this->data;
+	} 
+	]]></add>
+        </operation>
+        <operation>
+            <search index="0"><![CDATA[public function load(]]></search>
+            <ignoreif><![CDATA[return $this->load_full($filename);]]></ignoreif>
+            <add position="after"><![CDATA[		return $this->load_full($filename);]]></add>
+        </operation>
+	</file>
+
+</modification>

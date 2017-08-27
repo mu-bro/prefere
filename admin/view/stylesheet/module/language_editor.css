@@ -1,0 +1,69 @@
+/**
+ * Language Editor
+ * @author opencart-templates
+ */
+
+/* Vertical Tabs - https://github.com/dbtek/bootstrap-vertical-tabs */
+.tabs-left, .tabs-right {
+  border-bottom: none;
+  padding-top: 2px;
+}
+.tabs-left {
+  border-right: 1px solid #ddd;
+}
+.tabs-right {
+  border-left: 1px solid #ddd;
+}
+.tabs-left>li, .tabs-right>li {
+  float: none;
+  margin-bottom: 2px;
+}
+.tabs-left>li {
+  margin-right: -1px;
+}
+.tabs-right>li {
+  margin-left: -1px;
+}
+.tabs-left>li.active>a,
+.tabs-left>li.active>a:hover,
+.tabs-left>li.active>a:focus {
+  border-bottom-color: #ddd;
+  border-right-color: transparent;
+}
+
+.tabs-right>li.active>a,
+.tabs-right>li.active>a:hover,
+.tabs-right>li.active>a:focus {
+  border-bottom: 1px solid #ddd;
+  border-left-color: transparent;
+}
+.tabs-left>li>a {
+  border-radius: 4px 0 0 4px;
+  margin-right: 0;
+  display:block;
+}
+.tabs-right>li>a {
+  border-radius: 0 4px 4px 0;
+  margin-right: 0;
+}
+
+#language-files .table {
+	margin-bottom: 0
+}
+#language-files .table tbody > :first-child > td {
+	border-top: none
+}
+
+#form-filter {
+	padding-bottom: 5px
+}
+#form-filter label {
+	margin-bottom: 0;
+	font-weight: normal
+}
+#form-filter-btn {
+	border-radius: 4px;
+    font-size: 15px;
+    line-height: 1.33;
+    padding: 6px 15px
+}
