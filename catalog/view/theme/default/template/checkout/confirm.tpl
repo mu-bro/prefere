@@ -22,9 +22,9 @@
                         <?php } ?></td>
                     <td class="text-right"><?php echo $product['price']; ?></td>
                     <td class="text-right">
-                        <?php echo $text_delivery; ?>: <?php echo $product['shipping']['price']; ?><br/>
-                        <?php echo $product['shipping']['title']; ?>
+                        x <?php echo $product['quantity']; ?>
                     </td>
+                    <td class="text-right"><?php echo $product['total']; ?></td>
                 </tr>
             <?php } ?>
             </tbody>

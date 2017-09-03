@@ -132,6 +132,7 @@ class ModelSaleOrder extends Model {
 				'shipping_code'           => $order_query->row['shipping_code'],
 				'comment'                 => $order_query->row['comment'],
 				'total'                   => $order_query->row['total'],
+				'del_info'                => $order_query->row['del_info'],
 				'reward'                  => $reward,
 				'order_status_id'         => $order_query->row['order_status_id'],
 				'affiliate_id'            => $order_query->row['affiliate_id'],

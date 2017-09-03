@@ -3,6 +3,24 @@ class ModelCheckoutCart extends Model {
 
 	public function cartValidation($cartInfo) {
 		$error = array();
+		$delInfo = $cartInfo["delInfo"];
+
+		$this->validateCustomer($cartInfo, $error);
+		$this->validateMessage($delInfo, $error);
+		$this->validateDeliverer($delInfo, $error);
+		$this->validateShippingMethod($delInfo, $error);
+
+//p($error,$cartInfo);
+//p($this->cart->getProducts(),$delInfo);
+
+		return $error;
+	}
+	private function validateMessage($cartInfo, &$error) {
+		if (utf8_strlen($cartInfo['message']) > 250) {
+			$error['products']['message'] = $this->language->get('error_message_length');
+		}
+	}
+	private function validateCustomer($cartInfo, &$error) {
 		$customer = $cartInfo["customer"];
 
 		if (empty($customer['name'])) {
@@ -32,68 +50,52 @@ class ModelCheckoutCart extends Model {
 				$error['customer']['email'] = $this->language->get('error_email_exists');
 			}
 		}
+	}
 
-		$delInfo = $cartInfo["delInfo"];
-//p($this->cart->getProducts(),$delInfo);
-		foreach ($this->cart->getProducts() as $key => $product) {
-			$cartKey = $product['cart_id'];
-			if (!isset($delInfo[$cartKey])) {
-				$error['fatal'] = true;
-			} else {
-				$cartInfo = $delInfo[$cartKey];
-				if (utf8_strlen($cartInfo['message']) > 250) {
-					$error['products'][$cartKey]['message'] = $this->language->get('error_message_length');
-				}
+	private function validateDeliverer($cartInfo, &$error) {
+		if (empty($cartInfo['deliverer'])) {
+			$error['delInfo']['deliverer'] = $this->language->get('error_deliverer');
+		} elseif ($cartInfo['deliverer'] == "ELSE") {
 
-				if (empty($cartInfo['deliverer'])) {
-					$error['products'][$cartKey]['deliverer'] = $this->language->get('error_deliverer');
-				} elseif ($cartInfo['deliverer'] == "ELSE") {
+			if (empty($cartInfo['deliver']['name'])) {
+				$error['delInfo']['deliver']['name'] = $this->language->get('error_deliver_name');
+			} elseif ((utf8_strlen($cartInfo['deliver']['name']) > 96) || utf8_strlen($cartInfo['deliver']['name']) < 2) {
+				$error['delInfo']['deliver']['name'] = $this->language->get('error_name_length');
+			}
 
-					if (empty($cartInfo['deliver']['name'])) {
-						$error['products'][$cartKey]['deliver']['name'] = $this->language->get('error_deliver_name');
-					} elseif ((utf8_strlen($cartInfo['deliver']['name']) > 96) || utf8_strlen($cartInfo['deliver']['name']) < 2) {
-						$error['products'][$cartKey]['deliver']['name'] = $this->language->get('error_name_length');
-					}
-
-					if (empty($cartInfo['deliver']['phone'])) {
-						$error['products'][$cartKey]['deliver']['phone'] = $this->language->get('error_deliver_phone');
-					}
-				}
-				if (empty($cartInfo['shipping_method']['code'])) {
-					$error['products'][$cartKey]['shipping_method']['code'] = $this->language->get('error_shipping_method');
-				} else {
-					$codeName = str_replace(".", "_", $cartInfo['shipping_method']['code']);
-					$shipInfo = $cartInfo['shipping_method'][$codeName];
-					if ($codeName != "pickup_pickup") {
-						if ($codeName != "citylink_citylink") {
-							if (empty($shipInfo['city'])) {
-								$error['products'][$cartKey]['shipping_method']['addr']['city'] = $this->language->get('error_city');
-							}
-						}
-						if (empty($shipInfo['address'])) {
-							$error['products'][$cartKey]['shipping_method']['addr']['address'] = $this->language->get('error_address');
-						}
-					}
-					if (empty($shipInfo['date'])) {
-						$error['products'][$cartKey]['shipping_method']['addr']['date'] = $this->language->get('error_date');
-					}
-					if (empty($shipInfo['time'])) {
-						$error['products'][$cartKey]['shipping_method']['addr']['time'] = $this->language->get('error_time');
-					}
-					if (isset($error['products'][$cartKey]['shipping_method']['addr'])) {
-						$error['products'][$cartKey]['shipping_method']['codeValue'] = $codeName;
-					}
-
-
-					//p($info);
-				}
-
+			if (empty($cartInfo['deliver']['phone'])) {
+				$error['delInfo']['deliver']['phone'] = $this->language->get('error_deliver_phone');
 			}
 		}
+	}
 
-		//p($error, $delInfo);
-
-		return $error;
+	private function validateShippingMethod($cartInfo, &$error) {
+//		p($cartInfo);
+		if (empty($cartInfo['shipping_method']['code'])) {
+			$error['delInfo']['shipping_method']['code'] = $this->language->get('error_shipping_method');
+		} else {
+			$codeName = str_replace(".", "_", $cartInfo['shipping_method']['code']);
+			$shipInfo = $cartInfo['shipping_method'][$codeName];
+			if ($codeName != "pickup_pickup") {
+				if ($codeName != "citylink_citylink") {
+					if (empty($shipInfo['city'])) {
+						$error['delInfo']['shipping_method']['addr']['city'] = $this->language->get('error_city');
+					}
+				}
+				if (empty($shipInfo['address'])) {
+					$error['delInfo']['shipping_method']['addr']['address'] = $this->language->get('error_address');
+				}
+			}
+			if (empty($shipInfo['date'])) {
+				$error['delInfo']['shipping_method']['addr']['date'] = $this->language->get('error_date');
+			}
+			if (empty($shipInfo['time'])) {
+				$error['delInfo']['shipping_method']['addr']['time'] = $this->language->get('error_time');
+			}
+			if (isset($error['delInfo']['shipping_method']['addr'])) {
+				$error['delInfo']['shipping_method']['codeValue'] = $codeName;
+			}
+		}
 	}
 
 	public function getShippingMethods() {

@@ -746,6 +746,7 @@ class ControllerSaleOrder extends Controller {
 
 			$data['shipping_method'] = $order_info['shipping_method'];
 			$data['payment_method'] = $order_info['payment_method'];
+			$data['delInfo'] = unserialize($order_info['del_info']);
 
 			// Payment Address
 			if ($order_info['payment_address_format']) {
@@ -862,7 +863,6 @@ class ControllerSaleOrder extends Controller {
 				}
 
 				$data['products'][] = array(
-					'delInfo' 		   => unserialize($product['del_info']),
 					'order_product_id' => $product['order_product_id'],
 					'product_id'       => $product['product_id'],
 					'name'    	 	   => $product['name'],

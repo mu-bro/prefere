@@ -1630,6 +1630,16 @@ a.thumbnail {
 	font-size:16px;
 	margin-top:6px;
 }
+.cartProductInfo .quantity {
+	margin-top:6px;
+	float:left;
+}
+.cartProductInfo .quantity .form-control {
+	height: 28px;
+	display: inline-block;
+	width: auto;
+	margin-right:6px;
+}
 .cartBlock .removeButton {
 	position:absolute;
 	right:20px;

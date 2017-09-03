@@ -1,7 +1,7 @@
 <?php
 class ControllerPaymentPPStandard extends Controller {
 	public function index() {
-		$this->language->load('payment/pp_standard');
+		$data = array_merge(isset($data) ? $data : array(), $this->load->language('payment/pp_standard'));
 
 		$data['testmode'] = $this->config->get('pp_standard_test');
 

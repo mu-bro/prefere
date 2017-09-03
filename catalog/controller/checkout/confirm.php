@@ -83,6 +83,19 @@ class ControllerCheckoutConfirm extends Controller {
 			$order_data['store_id'] = $this->config->get('config_store_id');
 			$order_data['store_name'] = $this->config->get('config_name');
 
+
+			$delInfo = $cartInfo['delInfo'];
+			$shippingCode = str_replace(".","_",$delInfo['shipping_method']['code']);
+			$shArray = explode("_",$shippingCode);
+			$shippingInfo = $this->session->data['shipping_methods'][$shArray[0]]['quote'][$shArray[1]];
+			$delInfo['shipping_method'] = array(
+				"code" => $shippingInfo['code'],
+				"name" => $shippingInfo['title'],
+				"cost" => $shippingInfo['cost'],
+				"info" => $delInfo['shipping_method'][$shippingCode]
+			);
+			$order_data['del_info'] = $delInfo;
+
 			if ($order_data['store_id']) {
 				$order_data['store_url'] = $this->config->get('config_url');
 			} else {
@@ -96,19 +109,19 @@ class ControllerCheckoutConfirm extends Controller {
 
 				$order_data['customer_id'] = $this->customer->getId();
 				$order_data['customer_group_id'] = $customer_info['customer_group_id'];
-				$order_data['firstname'] = $this->session->data['customerInfo']['name'];
+				$order_data['firstname'] = $cartInfo['customer']['name'];
 				$order_data['lastname'] = '';
-				$order_data['email'] = $this->session->data['customerInfo']['email'];
-				$order_data['telephone'] = $this->session->data['customerInfo']['phone'];
+				$order_data['email'] = $cartInfo['customer']['email'];
+				$order_data['telephone'] = $cartInfo['customer']['phone'];
 				$order_data['fax'] = $customer_info['fax'];
 				$order_data['custom_field'] = json_decode($customer_info['custom_field'], true);
 			} else {
 				$order_data['customer_id'] = 0;
 				$order_data['customer_group_id'] = $this->config->get('config_customer_group_id');
-				$order_data['firstname'] = $this->session->data['customerInfo']['name'];
+				$order_data['firstname'] = $cartInfo['customer']['name'];
 				$order_data['lastname'] = '';
-				$order_data['email'] = $this->session->data['customerInfo']['email'];
-				$order_data['telephone'] = $this->session->data['customerInfo']['phone'];
+				$order_data['email'] = $cartInfo['customer']['email'];
+				$order_data['telephone'] = $cartInfo['customer']['phone'];
 				$order_data['fax'] = '';
 				$order_data['custom_field'] = '';
 			}
@@ -169,22 +182,22 @@ class ControllerCheckoutConfirm extends Controller {
 					);
 				}
 
-                $delInfo = $this->session->data['delInfo'][$product['cart_id']];
-				$shippingCode = str_replace(".","_",$delInfo['shipping_method']['code']);
-				$shArray = explode("_",$shippingCode);
-				$shippingInfo = $this->session->data['shipping_methods'][$shArray[0]]['quote'][$shArray[1]];
-
-                $delInfo['shipping_method'] = array(
-                    "code" => $shippingInfo['code'],
-					"name" => $shippingInfo['title'],
-                    "cost" => $shippingInfo['cost'],
-					"info" => $delInfo['shipping_method'][$shippingCode]
-                );
+//                $delInfo = $this->session->data['delInfo'][$product['cart_id']];
+//				$shippingCode = str_replace(".","_",$delInfo['shipping_method']['code']);
+//				$shArray = explode("_",$shippingCode);
+//				$shippingInfo = $this->session->data['shipping_methods'][$shArray[0]]['quote'][$shArray[1]];
+//
+//                $delInfo['shipping_method'] = array(
+//                    "code" => $shippingInfo['code'],
+//					"name" => $shippingInfo['title'],
+//                    "cost" => $shippingInfo['cost'],
+//					"info" => $delInfo['shipping_method'][$shippingCode]
+//                );
 				//p($this->session->data);
                 //p($delInfo, $this->session->data['delInfo'][$product['cart_id']]);
 
 				$order_data['products'][] = array(
-					'delInfo'    => $delInfo,
+//					'delInfo'    => $delInfo,
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
 					'model'      => $product['model'],
@@ -351,7 +364,7 @@ class ControllerCheckoutConfirm extends Controller {
 				}
 
 				$data['products'][] = array(
-					'shipping'   => $this->model_total_shipping->getProductShipping($product['cart_id']),
+//					'shipping'   => $this->model_total_shipping->getProductShipping($product['cart_id']),
 					'thumb'      => $image,
 					'cart_id'    => $product['cart_id'],
 					'product_id' => $product['product_id'],

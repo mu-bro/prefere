@@ -37,9 +37,12 @@
 
             <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="cartForm">
                 <div class="cartBlock checkout">
+                    <div class="row" id="flowerForm">
+                        <?php
+                        include "catalog/view/theme/default/template/checkout/flowerForm.tpl"; ?>
+                    </div>
                     <?php foreach ($products as $k => $product) {
                         $key = $product["cart_id"];
-                        $delInfo = $product["delInfo"];
                         ?>
                         <div class="row" id="cartProduct<?php echo $product['cart_id']; ?>">
                             <div class="col-lg-5 cartProductInfo">
@@ -70,6 +73,16 @@
                                     <div class="price">
                                         <?php echo $product['total']; ?>
                                     </div>
+                                    <div class="quantity">
+                                        <select name="quantity[<?php echo $product['cart_id']; ?>]" class="form-control" rel="<?php echo $product['cart_id']; ?>">
+                                            <?php for ($i = 1; $i <= 10; $i++) { ?>
+                                                <option value="<?php echo $i; ?>" <?php if ($i == $product['quantity']) echo
+                                                'selected="selected"';
+                                                ?>><?php echo $i; ?></option>
+                                            <?php } ?>
+                                        </select>
+
+                                    </div>
                                 </div>
                                 <a class="removeButton" href="javascript:void(0);"
                                    title="<?php echo $button_remove; ?>"
@@ -77,19 +90,10 @@
                                         class="fa fa-2 fa-times"></i></a>
 
                                 <div class="clear"></div>
-                                <h3><?php echo $text_flower_message; ?></h3>
-                                            <textarea
-
-                                                id="message_<?php echo $key; ?>"
-                                                maxlength="250"
-                                                name="delInfo[<?php echo $key; ?>][message]" class="form-control"
-                                                placeholder="<?php echo $text_flower_message_placeholder; ?>"><?php echo $delInfo['message']; ?></textarea>
 
                             </div>
                             <div class="col-lg-7">
-                                <?php
-                                $index = $k;
-                                include "catalog/view/theme/default/template/checkout/flowerForm.tpl"; ?>
+
                             </div>
                         </div>
 
@@ -136,21 +140,28 @@
         }
     });
     $('.chooseBlock input[type="radio"]').on('change', function () {
-        prodKey = $(this).closest(".chooseBlock").attr("rel");
         if ($(this).val() == "ELSE") {
-            $("#deliverer_" + prodKey).slideDown();
+            $("#flowerForm #deliverer").slideDown();
         } else {
-            $("#deliverer_" + prodKey).slideUp();
+            $("#flowerForm #deliverer").slideUp();
         }
     });
     $('.shipping_methods_choice input[type="radio"]').on('change', function () {
         prodKey = $(this).attr("rel");
         shipCode = $(this).attr("rev");
-        choosenBlock = "#ship_" + prodKey + "_" + shipCode;
-        $(".ship_" + prodKey + ":not(" + choosenBlock + ")").slideUp();
+        choosenBlock = "#ship" + "_" + shipCode;
+        $(".ship" + ":not(" + choosenBlock + ")").slideUp();
         $(choosenBlock).slideDown();
 
     });
+
+    $('.quantity select').on('change', function () {
+        var cartId = $(this).attr('rel');
+        var quantity = $(this).val();
+        updateProductQuantity(this, cartId, quantity);
+    });
+
+
     $(function () {
         $.mask.definitions['x'] = '[0-9]';
         $('.telephone_form').mask("<?php echo $config_telephone_mask; ?>", {placeholder: "_"});

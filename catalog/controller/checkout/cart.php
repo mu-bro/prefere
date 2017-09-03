@@ -2,7 +2,7 @@
 
 class ControllerCheckoutCart extends Controller {
     public function index() {
-
+//        p($this->session->data);
         $data = array_merge(isset($data) ? $data : array(), $this->load->language('checkout/cart'));
 
         $this->document->setTitle($this->language->get('heading_title'));
@@ -163,8 +163,10 @@ class ControllerCheckoutCart extends Controller {
                     }
                 }
 
+                $data['delInfo'] = isset($this->session->data['delInfo']) ? $this->session->data['delInfo'] :
+                    $this->delInfoObject();
+
                 $data['products'][] = array(
-                    'delInfo' => isset($this->session->data['delInfo'][$product['cart_id']]) ? $this->session->data['delInfo'][$product['cart_id']] : $this->delInfoObject(),
                     'cart_id' => $product['cart_id'],
                     'thumb' => $image,
                     'name' => $product['name'],
@@ -316,7 +318,6 @@ class ControllerCheckoutCart extends Controller {
             }
 
             if (!$json) {
-                $quantity = 1;
                 $this->cart->add($this->request->post['product_id'], $quantity, $option, $recurring_id);
 
                 $json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));
@@ -337,6 +338,26 @@ class ControllerCheckoutCart extends Controller {
         $this->response->setOutput(json_encode($json));
     }
 
+    public function editQuantity() {
+        $this->cart->update($this->request->post['cartId'], $this->request->post['quantity']);
+        $product = $this->cart->getProductInfoByCartId($this->request->post['cartId']);
+        $price = $this->currency->format($this->tax->calculate($product['total'], $product['tax_class_id'], $this->config->get
+        ('config_tax')));
+
+        $response = array();
+        $response['price'] = $price;
+
+        list($totals,$total) = $this->getTotals();
+        $total_text = '<tr><td class="text-right">%s:</td><td class="text-right total">%s</td></tr>';
+        $response['totals'] = '';
+        foreach ($totals as $total_item) {
+            $response['totals'] .= sprintf($total_text, $total_item['title'],$total_item['text']);
+        }
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($response));
+
+    }
     public function edit() {
 
         $data = array_merge(isset($data) ? $data : array(), $this->load->language('checkout/cart'));
@@ -407,7 +428,7 @@ class ControllerCheckoutCart extends Controller {
 
         $this->session->data['delInfo'] = $this->request->post["delInfo"];
         $this->session->data['customerInfo'] = $this->request->post["customer"];
-        //p($this->session->data['delInfo']);
+//        p($this->request->post);
         $error = $this->model_checkout_cart->cartValidation($this->request->post);
         //p($error,$this->session->data['delInfo']);
         if (empty($error)) {

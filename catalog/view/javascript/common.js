@@ -506,29 +506,27 @@ function sendCart() {
 					}
 				}
 
-				if (json['error']['products']) {
-					for (key in json['error']['products']) {
-						if (json['error']['products'][key]['deliver']) {
-							for (field in json['error']['products'][key]['deliver']) {
-								$("#deliverer_"+ key +" input[name='delInfo["+ key +"][deliver]["+ field +"]'").after("<span class='error'>" + json['error']['products'][key]['deliver'][field] + "</span>");
-							}
+				if (json['error']['delInfo']) {
+					if (json['error']['delInfo']['deliver']) {
+						for (field in json['error']['delInfo']['deliver']) {
+							$("#flowerForm #deliverer input[name='delInfo["+ key +"][deliver]["+ field +"]'").after("<span class='error'>" + json['error']['delInfo']['deliver'][field] + "</span>");
 						}
-						if (json['error']['products'][key]['message']) {
-							$("#message_"+ key +"").after("<span class='error'>" + json['error']['products'][key]['message'] + "</span>");
+					}
+					if (json['error']['delInfo']['message']) {
+						$("#flowerForm #message").after("<span class='error'>" + json['error']['delInfo']['message'] + "</span>");
+					}
+					if (json['error']['delInfo']['deliverer']) {
+						$("#flowerForm #chooseBlock").after("<span class='error'>" + json['error']['delInfo']['deliverer'] + "</span>");
+					}
+					if (json['error']['delInfo']['shipping_method']) {
+						if (json['error']['delInfo']['shipping_method']['code']) {
+							$("#flowerForm #shipping_method_title").after("<span class='error'>" +
+							json['error']['delInfo']['shipping_method']['code'] + "</span>");
 						}
-						if (json['error']['products'][key]['deliverer']) {
-							$("#chooseBlock_"+ key +"").after("<span class='error'>" + json['error']['products'][key]['deliverer'] + "</span>");
-						}
-						if (json['error']['products'][key]['shipping_method']) {
-							if (json['error']['products'][key]['shipping_method']['code']) {
-								$("#shipping_method_title_"+ key +"").after("<span class='error'>" +
-								json['error']['products'][key]['shipping_method']['code'] + "</span>");
-							}
-							if (json['error']['products'][key]['shipping_method']['addr']) {
-								codeValue = json['error']['products'][key]['shipping_method']['codeValue'];
-								for (field in json['error']['products'][key]['shipping_method']['addr']) {
-									$("#ship_"+ key +"_"+codeValue+" *[name='delInfo["+ key +"][shipping_method]["+ codeValue +"]["+ field +"]'").after("<span class='error'>" + json['error']['products'][key]['shipping_method']['addr'][field] + "</span>");
-								}
+						if (json['error']['delInfo']['shipping_method']['addr']) {
+							codeValue = json['error']['delInfo']['shipping_method']['codeValue'];
+							for (field in json['error']['delInfo']['shipping_method']['addr']) {
+								$("#flowerForm #ship_"+codeValue+" *[name='delInfo[shipping_method]["+ codeValue +"]["+ field +"]'").after("<span class='error'>" + json['error']['delInfo']['shipping_method']['addr'][field] + "</span>");
 							}
 						}
 					}
@@ -595,6 +593,25 @@ function copyFlowerInfo(blockKey) {
 			}
 
 			$('#message_' + currKey).val(message);
+		}
+	});
+}
+
+function updateProductQuantity(selectItem, cartId, quantity) {
+	$.ajax({
+		url: 'index.php?route=checkout/cart/editQuantity',
+		type: 'post',
+		data: 'cartId=' + cartId + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
+		dataType: 'json',
+		beforeSend: function() {
+			$(selectItem).after('<i class="fa fa-spinner fa-spin"></i>');
+		},
+		complete: function() {
+			$(selectItem).next('i.fa-spinner').remove();
+		},
+		success: function(json) {
+			$('#cartProduct' + cartId + ' .price').text(json['price']);
+			$('#cartBlock').html(json['totals']);
 		}
 	});
 }
