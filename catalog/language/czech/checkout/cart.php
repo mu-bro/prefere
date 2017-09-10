@@ -73,58 +73,33 @@ $_['text_flower_message'] = 'Text vzkazu';
 $_['text_flower_message_placeholder'] = 'ne více než 250 znaků';
 $_['error_message_length'] = 'Text zprávy nesmí přesáhnout 250 znaků';
 $_['text_apply_for_all_flowers'] = 'Použít informaci o doručení pro všechny kytice';
-/* replaced "text_success" */
 $_["text_success"] = "Kytice je přidána do košíku!";
-/* replaced "text_flower_message_placeholder" */
 $_["text_flower_message_placeholder"] = "ne více než 250 znaků";
-/* replaced "delivery_date" */
 $_["delivery_date"] = "Datum";
-/* replaced "text_flower_message" */
 $_["text_flower_message"] = "Text vzkazu";
-/* replaced "title_deliver_info" */
 $_["title_deliver_info"] = "Informace o dodání";
-/* replaced "text_me" */
 $_["text_me"] = 'MNĚ';
-/* replaced "text_other_deliverer" */
 $_["text_other_deliverer"] = "Jinému adresátovi";
-/* replaced "text_customer" */
 $_["text_customer"] = "Kupující";
-/* replaced "text_deliver" */
 $_["text_deliver"] = "Příjemce";
-/* replaced "text_city" */
 $_["text_city"] = "Město";
-/* replaced "text_addres" */
 $_["text_addres"] = "Adresa";
-/* replaced "delivery_time" */
 $_["delivery_time"] = "Čas";
-/* replaced "text_name" */
 $_["text_name"] = "Jméno";
-/* replaced "text_create_account" */
 $_["text_create_account"] = "Registrovat účet";
-/* replaced "error_city" */
 $_["error_city"] = "Vyberte prosím zemi!";
-/* replaced "error_address" */
 $_["error_address"] = "Vyplňte adresu";
-/* replaced "error_customer_name" */
 $_["error_customer_name"] = "Vyplňte jméno kupujícího";
-/* replaced "error_customer_email" */
 $_["error_customer_email"] = "Vyplňte emailovu adresu kupujícího";
-/* replaced "error_shipping_method" */
 $_["error_shipping_method"] = "Vyberte způsob dopravy";
-/* replaced "error_deliverer" */
 $_["error_deliverer"] = "Vyberte si komu doručit kytici.";
-/* replaced "text_email" */
 $_["text_email"] = "E-mail";
-/* replaced "error_customer_phone" */
 $_["error_customer_phone"] = "Vyplňte telefon v mezinárodním formátu";
-/* replaced "text_phone" */
 $_["text_phone"] = "Telefon v mezinárodním formátu";
-/* replaced "error_deliver_phone" */
 $_["error_deliver_phone"] = "Vyplňte telefon příjemce v mezinárodním formátu";
-/* replaced "text_where_to_deliver" */
 $_["text_where_to_deliver"] = "Kam doručit kytici?";
-/* replaced "text_make_suprize" */
 $_["text_make_suprize"] = 'Nepřikládejte k zásilce účet, je to dárek';
-/* replaced "title_deliverer" */
 $_["title_deliverer"] = "Komu doručit kytici?";
+$_["error_unavail_date"] = "Nesplnitelné datum dodání";
+
 ?>

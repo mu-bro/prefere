@@ -1097,7 +1097,10 @@ h2.price {
 	height: 28px;
 	border-radius: 3px;
 }
-
+.delInfo .error {
+	top:-8px;
+	position:relative;
+}
 .delInfo td {
 	text-align:left;
 }
@@ -1127,6 +1130,11 @@ h2.price {
 }
 .shippAdditionalInfo .row label {
 	padding-top:6px;
+}
+.shippAdditionalInfo .error {
+	display:inline-block;
+	text-align:right;
+	width: 100%;
 }
 @media (min-width: 768px) {
 	.shippAdditionalInfo .row .col-lg-5 {
@@ -1626,9 +1634,14 @@ a.thumbnail {
 	border:none;
 }
 .cartProductInfo .price {
-	color:#000;
+	color: #666;
 	font-size:16px;
-	margin-top:6px;
+	margin-top:0px;
+}
+.cartProductInfo .price.total {
+	color: #000;
+	font-size:16px;
+	margin-top:0px;
 }
 .cartProductInfo .quantity {
 	margin-top:6px;

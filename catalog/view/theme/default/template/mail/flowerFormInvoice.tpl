@@ -5,7 +5,7 @@
         </td>
     </tr>
     <tr>
-        <td style="width:50%;vertical-align:top;">
+        <td style="min-width:20%;vertical-align:top;">
             <div>
                 <h3 style="font-size: 13px; text-align:left;color: #000; margin: 0px; padding: 0px; text-transform: uppercase;font-weight:normal;margin-top:4px;"><?php echo $text_customer; ?></h3>
 
@@ -25,8 +25,11 @@
                     <div class="infoText"><?php echo $text_it_is_suprize; ?></div>
                 <?php } ?>
             <?php } ?>
+
+            <h3 style="margin: 0px; margin-top:20px;font-size: 13px; text-align:left;color: #000; padding: 0px; text-transform: uppercase;font-weight:normal;"><?php echo $text_flower_message; ?></h3>
+            <div class="infoText"><?php echo $delInfo['message']; ?></div>
         </td>
-        <td style="width:50%;vertical-align:top;">
+        <td style="min-width:20%;vertical-align:top;">
             <h3 style="font-size: 13px; text-align:left;color: #000; margin: 0px; padding: 0px; text-transform: uppercase;font-weight:normal;margin-top:4px;"><?php echo $text_date_and_place_delivery; ?></h3>
             <?php if (isset($delInfo['shipping_method']['info']['city'])) { ?>
                 <div class="infoText">
@@ -56,7 +59,6 @@
                 ( <?php echo $delInfo['shipping_method']['costText']; ?> )
             </div>
         </td>
-
     </tr>
 </table>
 

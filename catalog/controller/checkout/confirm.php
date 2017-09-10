@@ -182,22 +182,7 @@ class ControllerCheckoutConfirm extends Controller {
 					);
 				}
 
-//                $delInfo = $this->session->data['delInfo'][$product['cart_id']];
-//				$shippingCode = str_replace(".","_",$delInfo['shipping_method']['code']);
-//				$shArray = explode("_",$shippingCode);
-//				$shippingInfo = $this->session->data['shipping_methods'][$shArray[0]]['quote'][$shArray[1]];
-//
-//                $delInfo['shipping_method'] = array(
-//                    "code" => $shippingInfo['code'],
-//					"name" => $shippingInfo['title'],
-//                    "cost" => $shippingInfo['cost'],
-//					"info" => $delInfo['shipping_method'][$shippingCode]
-//                );
-				//p($this->session->data);
-                //p($delInfo, $this->session->data['delInfo'][$product['cart_id']]);
-
 				$order_data['products'][] = array(
-//					'delInfo'    => $delInfo,
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
 					'model'      => $product['model'],

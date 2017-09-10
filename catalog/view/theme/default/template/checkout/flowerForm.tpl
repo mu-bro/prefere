@@ -114,7 +114,7 @@
                                                 </div>
                                                 <div class="col-lg-7">
                                                     <div class="input-group datePickerGroup">
-                                                        <input class="form-control <?php echo $product['preorder'] ? "datePreOrder" : "date"; ?>"
+                                                        <input class="form-control <?php echo $preorder ? "datePreOrder" : "date"; ?>"
                                                                type="text"
                                                                name="delInfo[shipping_method][<?php echo $shortCode; ?>][date]"
                                                                data-date-format="DD.MM.YYYY"

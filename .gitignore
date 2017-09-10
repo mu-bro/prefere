@@ -9,9 +9,8 @@ image/flags/
 image/templates/
 image/cache/
 image/catalog/
-system/cache/
-system/logs/
-
+system/storage/cache/
+system/storage/logs/
 system/storage/
 
 # vQmod log files

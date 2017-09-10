@@ -89,15 +89,19 @@ padding: 0 7px;"><?php echo $title; ?></span></h3>
             </table>
         </td>
     </tr>
-    <?php foreach ($products as $k => $product) {
-        $delInfo = $product["delInfo"]; ?>
-        <tbody>
-        <tr>
-
-            <td style="width:40%;border-top: <?php echo ($k == 0) ? '1px solid #000' : '2px solid #DDD'; ?>;padding-top:10px;vertical-align:top;" class="cartProductInfo">
-                <table style="width:100%;">
+    <td colspan="2" style="border-top: 1px solid #000;padding-top:10px;vertical-align:top;" class="cartProductInfo">
+        <?php
+        include "catalog/view/theme/default/template/mail/flowerFormInvoice.tpl"; ?>
+    </td>
+    <tbody>
+    <tr>
+        <td colspan="2"
+            style="width:40%;padding-top:10px;vertical-align:top;"
+            class="cartProductInfo">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+                <?php foreach ($products as $k => $product) { ?>
                     <tr>
-                        <td>
+                        <td style="padding-top:3px;border-top: <?php echo ($k == 0) ? '1px solid #000' : '2px solid #DDD'; ?>">
                             <?php if ($product['thumb']) { ?>
                                 <div class="image">
                                     <a href="<?php echo $product['href']; ?>">
@@ -108,9 +112,10 @@ padding: 0 7px;"><?php echo $title; ?></span></h3>
                                 </div>
                             <?php } ?>
                         </td>
-                        <td style="vertical-align:top;">
+                        <td style="padding-top:5px;vertical-align:top;border-top:<?php echo ($k == 0) ? '1px solid #000' : '2px solid #DDD'; ?>">
                             <div class="title">
-                                <a style="font-size: 13px;color: #000;text-decoration: none;" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+                                <a style="font-size: 13px;color: #000;text-decoration: none;"
+                                   href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
 
                                 <div>
                                     <?php foreach ($product['option'] as $option) { ?>
@@ -120,28 +125,18 @@ padding: 0 7px;"><?php echo $title; ?></span></h3>
                                     <?php } ?>
                                 </div>
                                 <div style="font-size: 13px;color: #000;margin-top:4px;" class="price">
-                                    <?php echo $product['total']; ?>
+
+
                                 </div>
                             </div>
                         </td>
+                        <td style="padding-top:5px;vertical-align:top;border-top:<?php echo ($k == 0) ? '1px solid #000' : '2px solid #DDD'; ?>"><?php echo $product['price']; ?></td>
+                        <td style="padding-top:5px;vertical-align:top;border-top:<?php echo ($k == 0) ? '1px solid #000' : '2px solid #DDD'; ?>">x <?php echo $product['quantity']; ?></td>
+                        <td style="padding-top:5px;vertical-align:top;border-top:<?php echo ($k == 0) ? '1px solid #000' : '2px solid #DDD'; ?>"> = <b><?php echo $product['total']; ?></b></td>
                     </tr>
-                    <tr>
-                        <td colspan="2" style="padding-bottom:10px;">
-                            <h3 style="font-size: 13px; text-align:left;color: #000; margin: 0px; padding: 0px; text-transform: uppercase;font-weight:normal;margin-top:10px;"><?php echo $text_flower_message; ?></h3>
-                            <div class="infoText"><?php echo $delInfo['message']; ?></div>
-                        </td>
-                    </tr>
-                </table>
-
-
-            </td>
-            <td style="width:40%;border-top: <?php echo ($k == 0) ? '1px solid #000' : '2px solid #DDD'; ?>;padding-top:10px;vertical-align:top;" class="cartProductInfo">
-                <?php
-                $index = $k;
-                include "catalog/view/theme/default/template/mail/flowerFormInvoice.tpl"; ?>
-            </td>
-        </tr>
-        </tbody>
-    <?php } ?>
+                <?php } ?>
+            </table>
+        </td>
+    </tr>
+    </tbody>
 </table>
-</div>

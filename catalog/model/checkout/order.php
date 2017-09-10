@@ -259,6 +259,7 @@ class ModelCheckoutOrder extends Model {
                 'user_agent' => $order_query->row['user_agent'],
                 'accept_language' => $order_query->row['accept_language'],
                 'date_modified' => $order_query->row['date_modified'],
+                'del_info' => $order_query->row['del_info'],
                 'date_added' => $order_query->row['date_added']
             );
         } else {
@@ -393,7 +394,6 @@ class ModelCheckoutOrder extends Model {
 
             $this->cache->delete('product');
             // If order status is 0 then becomes greater than 0 send main html email
-
             if (!$order_info['order_status_id'] && $order_status_id) {
                 // Check for any downloadable products
                 $download_status = false;
@@ -626,13 +626,9 @@ class ModelCheckoutOrder extends Model {
                         $image = '';
                     }
 
-                    $delInfo = unserialize($product['del_info']);
-                    $delInfo['shipping_method']['costText'] = $this->currency->format($delInfo['shipping_method']['cost']);
-
                     $data['products'][] = array(
                         'name' => $product['name'],
                         'thumb' => $image,
-                        'delInfo'     => $delInfo,
                         'model' => $product['model'],
                         'option' => $option_data,
                         'quantity' => $product['quantity'],
@@ -641,6 +637,9 @@ class ModelCheckoutOrder extends Model {
                         'href'   => $this->url->link('product/product', 'product_id=' . $product['product_id'])
                     );
                 }
+
+                $data['delInfo'] = unserialize($order_info['del_info']);
+                $data['delInfo']['shipping_method']['costText'] = $this->currency->format($data['delInfo']['shipping_method']['cost']);
 
                 // Vouchers
                 $data['vouchers'] = array();
@@ -755,8 +754,8 @@ class ModelCheckoutOrder extends Model {
                 $mail->setText($text);
                 $mail->send();
 
-                //echo $this->document->createMail($html);
-                //p($order_info['email']);die;
+//                echo $this->document->createMail($html);
+//                p($order_info['email']);die;
 
                 // Admin Alert Mail
                 if ($this->config->get('config_order_mail')) {

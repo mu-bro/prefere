@@ -9,7 +9,7 @@ class ControllerCheckoutCart extends Controller {
 
         $this->load->model('checkout/cart');
         $data["shipping_methods"] = $this->model_checkout_cart->getShippingMethods();
-
+//unset($this->session->data['delInfo']['shipping_method']);
         $data["isLogged"] = $this->customer->isLogged();
         if (!isset($this->session->data['customerInfo'])) {
             if ($this->customer->isLogged()) {
@@ -84,6 +84,7 @@ class ControllerCheckoutCart extends Controller {
             $this->load->model('tool/upload');
 
             $data['products'] = array();
+            $preorder = false;
 
             $products = $this->cart->getProducts();
 
@@ -163,9 +164,6 @@ class ControllerCheckoutCart extends Controller {
                     }
                 }
 
-                $data['delInfo'] = isset($this->session->data['delInfo']) ? $this->session->data['delInfo'] :
-                    $this->delInfoObject();
-
                 $data['products'][] = array(
                     'cart_id' => $product['cart_id'],
                     'thumb' => $image,
@@ -181,8 +179,16 @@ class ControllerCheckoutCart extends Controller {
                     'total' => $total,
                     'href' => $this->url->link('product/product', 'product_id=' . $product['product_id'])
                 );
+
+                if ($product['preorder']) {
+                    $preorder = true;
+                }
             }
-//p($data['products'],$this->session->data['delInfo']);
+
+            $data['delInfo'] = isset($this->session->data['delInfo']) ? $this->session->data['delInfo'] :
+                $this->delInfoObject();
+            $data['preorder'] = $preorder;
+
             // Gift Voucher
             $data['vouchers'] = array();
 
@@ -451,9 +457,7 @@ class ControllerCheckoutCart extends Controller {
                 $json['totals'] .= sprintf($total_text, $total_item['title'],$total_item['text']);
             }
         }
-          //p($json,$_POST);
         $this->response->setOutput(json_encode($json));
-        //p($_POST);
     }
 
 

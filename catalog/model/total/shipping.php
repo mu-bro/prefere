@@ -8,28 +8,30 @@ class ModelTotalShipping extends Model {
             if (isset($delInfo['shipping_method']['code'])) {
                 $shippingCode = str_replace(".", "_", $delInfo['shipping_method']['code']);
                 $shArray = explode("_", $shippingCode);
-                $shippingInfo = $this->session->data['shipping_methods'][$shArray[0]]['quote'][$shArray[1]];
+                if (isset($this->session->data['shipping_methods'][$shArray[0]])) {
+                    $shippingInfo = $this->session->data['shipping_methods'][$shArray[0]]['quote'][$shArray[1]];
 
-                $total_data[] = array(
-                    'code' => 'shipping',
-                    'title' => $shippingInfo['title'],
-                    'value' => $shippingInfo['cost'],
-                    'sort_order' => $this->config->get('shipping_sort_order')
-                );
+                    $total_data[] = array(
+                        'code' => 'shipping',
+                        'title' => $shippingInfo['title'],
+                        'value' => $shippingInfo['cost'],
+                        'sort_order' => $this->config->get('shipping_sort_order')
+                    );
 
-                if ($shippingInfo['tax_class_id']) {
-                    $tax_rates = $this->tax->getRates($shippingInfo['cost'], $shippingInfo['tax_class_id']);
+                    if ($shippingInfo['tax_class_id']) {
+                        $tax_rates = $this->tax->getRates($shippingInfo['cost'], $shippingInfo['tax_class_id']);
 
-                    foreach ($tax_rates as $tax_rate) {
-                        if (!isset($taxes[$tax_rate['tax_rate_id']])) {
-                            $taxes[$tax_rate['tax_rate_id']] = $tax_rate['amount'];
-                        } else {
-                            $taxes[$tax_rate['tax_rate_id']] += $tax_rate['amount'];
+                        foreach ($tax_rates as $tax_rate) {
+                            if (!isset($taxes[$tax_rate['tax_rate_id']])) {
+                                $taxes[$tax_rate['tax_rate_id']] = $tax_rate['amount'];
+                            } else {
+                                $taxes[$tax_rate['tax_rate_id']] += $tax_rate['amount'];
+                            }
                         }
                     }
-                }
 
-                $total += $shippingInfo['cost'];
+                    $total += $shippingInfo['cost'];
+                }
             }
         }
     }

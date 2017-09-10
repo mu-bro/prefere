@@ -31,7 +31,7 @@ class ModelCheckoutCart extends Model {
 		if (empty($customer['email'])) {
 			$error['customer']['email'] = $this->language->get('error_customer_email');
 		} elseif ((utf8_strlen($customer['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $customer['email'])) {
-			$error['customer']['email'] = $this->language->get('error_email_valid');
+			$error['customer']['email'] = $this->language->get('error_email_validd');
 		}
 		if (empty($customer['phone'])) {
 			$error['customer']['phone'] = $this->language->get('error_customer_phone');
@@ -88,6 +88,8 @@ class ModelCheckoutCart extends Model {
 			}
 			if (empty($shipInfo['date'])) {
 				$error['delInfo']['shipping_method']['addr']['date'] = $this->language->get('error_date');
+			} elseif (!$this->document->isValidDeliverDate($shipInfo['date'])) {
+				$error['delInfo']['shipping_method']['addr']['date'] = $this->language->get('error_unavail_date');
 			}
 			if (empty($shipInfo['time'])) {
 				$error['delInfo']['shipping_method']['addr']['time'] = $this->language->get('error_time');

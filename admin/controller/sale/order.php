@@ -747,7 +747,7 @@ class ControllerSaleOrder extends Controller {
 			$data['shipping_method'] = $order_info['shipping_method'];
 			$data['payment_method'] = $order_info['payment_method'];
 			$data['delInfo'] = unserialize($order_info['del_info']);
-
+//p($data['delInfo']);
 			// Payment Address
 			if ($order_info['payment_address_format']) {
 				$format = $order_info['payment_address_format'];

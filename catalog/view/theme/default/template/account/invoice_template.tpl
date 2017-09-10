@@ -74,10 +74,11 @@
         </div>
     </div>
 </div>
+<?php
+include "catalog/view/theme/default/template/checkout/flowerFormInvoice.tpl"; ?>
 <div class="table-responsive cartBlock">
     <table class="table">
-        <?php foreach ($products as $k => $product) {
-            $delInfo = $product["delInfo"]; ?>
+        <?php foreach ($products as $k => $product) { ?>
             <tbody>
             <tr>
                 <td>
@@ -102,20 +103,17 @@
                                         <br/>
                                     <?php } ?>
                                 </div>
-                                <div class="price">
-                                    <?php echo $product['total']; ?>
-                                </div>
                             </div>
-                            <div class="clear"></div>
-                            <h3><?php echo $text_flower_message; ?></h3>
-
-                            <div class="infoText"><?php echo $delInfo['message']; ?></div>
-
                         </div>
-                        <div class="col-lg-7">
-                            <?php
-                            $index = $k;
-                            include "catalog/view/theme/default/template/checkout/flowerFormInvoice.tpl"; ?>
+                        <div class="col-lg-2 pull-right cartProductInfo">
+                            <div class="price total text-right">
+                                <?php echo $product['total']; ?>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 pull-right cartProductInfo ">
+                            <div class="price text-right">
+                                <?php echo $product['price']; ?> x <?php echo $product['quantity']; ?>
+                            </div>
                         </div>
                     </div>
                 </td>

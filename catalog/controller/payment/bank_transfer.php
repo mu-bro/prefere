@@ -1,7 +1,8 @@
 <?php
 class ControllerPaymentBankTransfer extends Controller {
 	public function index() {
-$data = array_merge( isset($data) ? $data : array() , $this->load->language('payment/bank_transfer'));
+
+$data = array_merge( isset($data) ? $data : array() , $this->load->language('payment/bank_transfer'));
 
 		$data['bank'] = nl2br($this->config->get('bank_transfer_bank' . $this->config->get('config_language_id')));
 
@@ -16,7 +17,8 @@ class ControllerPaymentBankTransfer extends Controller {
 
 	public function confirm() {
 		if ($this->session->data['payment_method']['code'] == 'bank_transfer') {
-$data = array_merge( isset($data) ? $data : array() , $this->load->language('payment/bank_transfer'));
+
+$data = array_merge( isset($data) ? $data : array() , $this->load->language('payment/bank_transfer'));
 
 			$this->load->model('checkout/order');
 
