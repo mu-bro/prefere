@@ -137,8 +137,9 @@ class Document {
     }
 
     public function getDisabledPreOrderDates() {
+        $preorder = $this->config->get('title_preorder_days');
         $dates = $this->getDisabledDates();
-        for ($i = 1; $i < 5; $i++) {
+        for ($i = 1; $i <= $preorder; $i++) {
             $dates[] = date('d.m.Y', strtotime("+$i days"));
         }
 

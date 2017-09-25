@@ -1099,7 +1099,7 @@
                                             <td class="text-left"><?php echo $customer_group['name']; ?></td>
                                             <td class="text-right"><input type="text"
                                                                           name="product_reward[<?php echo $customer_group['customer_group_id']; ?>][points]"
-                                                                          value="<?php echo isset($product_reward[$customer_group['customer_group_id']]) ? $product_reward[$customer_group['customer_group_id']]['points'] : ''; ?>"
+                                                                          value="<?php echo isset($product_reward[$customer_group['customer_group_id']]) ? $product_reward[$customer_group['customer_group_id']]['points'] : '-1'; ?>"
                                                                           class="form-control"/></td>
                                         </tr>
                                     <?php } ?>

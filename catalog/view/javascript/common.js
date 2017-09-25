@@ -507,9 +507,16 @@ function sendCart() {
                 }
 
                 if (json['error']['delInfo']) {
+                    if (json['error']['delInfo']['company']) {
+                        for (field in json['error']['delInfo']['company']) {
+                            $("#flowerForm #is_company_block *[name='delInfo[company][" + field + "]'")
+                                .after("<span class='error'>" + json['error']['delInfo']['company'][field] + "</span>");
+                        }
+                    }
                     if (json['error']['delInfo']['deliver']) {
                         for (field in json['error']['delInfo']['deliver']) {
-                            $("#flowerForm #deliverer input[name='delInfo[" + key + "][deliver][" + field + "]'").after("<span class='error'>" + json['error']['delInfo']['deliver'][field] + "</span>");
+                            $("#flowerForm #deliverer input[name='delInfo[deliver][" + field + "]'")
+                                .after("<span class='error'>" + json['error']['delInfo']['deliver'][field] + "</span>");
                         }
                     }
                     if (json['error']['delInfo']['message']) {
@@ -619,4 +626,23 @@ function updateProductQuantity(selectItem, cartId, quantity) {
             $('#cartBlock').html(json['totals']);
         }
     });
+}
+
+function updateDelivererBlockStatus(itemValue) {
+    if (itemValue == "ELSE") {
+        $("#flowerForm #deliverer").removeClass("disabled");
+        $("#flowerForm #deliverer fieldset > input").removeAttr("readonly");
+    } else {
+        $("#flowerForm #deliverer").addClass("disabled");
+        $("#flowerForm #deliverer fieldset > input").attr("readonly", true);
+    }
+}
+function updateCompanyBlockStatus(item) {
+    if ($(item).prop( "checked" )) {
+        $("#flowerForm #is_company_block").removeClass("disabled");
+        $("#flowerForm #is_company_block fieldset > *").removeAttr("readonly");
+    } else {
+        $("#flowerForm #is_company_block").addClass("disabled");
+        $("#flowerForm #is_company_block fieldset > *").attr("readonly", true);
+    }
 }

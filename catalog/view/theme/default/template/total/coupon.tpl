@@ -3,13 +3,13 @@
    data-toggle="collapse"
    data-parent="#accordion"><?php echo $heading_title; ?> <i class="fa fa-caret-down"></i></a>
 <div id="collapse-coupon" class="panel-collapse collapse in">
-        <div class="input-group">
-            <input type="text"
-                   name="coupon"
-                   value="<?php echo $coupon; ?>"
-                   placeholder="<?php echo $entry_coupon; ?>"
-                   id="input-coupon"
-                   class="form-control"/>
+    <div class="input-group">
+        <input type="text"
+               name="coupon"
+               value="<?php echo $coupon; ?>"
+               placeholder="<?php echo $entry_coupon; ?>"
+               id="input-coupon"
+               class="form-control"/>
         <span class="input-group-btn">
         <input type="button"
                value="<?php echo $button_coupon; ?>"
@@ -39,12 +39,12 @@
                     $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
                     $('html, body').animate({scrollTop: 0}, 'slow');
-                }		
-		if (json['totals']) {
-			$('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-			$('#cartBlock').html(json['totals']);
-			$('html, body').animate({ scrollTop: 0 }, 'slow');                
-		}
+                }
+                if (json['totals']) {
+                    $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    $('#cartBlock').html(json['totals']);
+                    $('html, body').animate({scrollTop: 0}, 'slow');
+                }
                 if (json['redirect']) {
                     location = json['redirect'];
                 }

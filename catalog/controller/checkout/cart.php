@@ -35,6 +35,12 @@ class ControllerCheckoutCart extends Controller {
         $data['defaultDate'] = $this->document->getDefaultDate();
         $data['deliver_frames'] = explode(",", str_replace(" ","",$this->config->get("config_deliver_frames")));
 
+        if (isset($this->session->data['comment'])) {
+            $data['comment'] = $this->session->data['comment'];
+        } else {
+            $data['comment'] = '';
+        }
+
         $data['breadcrumbs'] = array();
 
         $data['breadcrumbs'][] = array(
@@ -434,6 +440,8 @@ class ControllerCheckoutCart extends Controller {
 
         $this->session->data['delInfo'] = $this->request->post["delInfo"];
         $this->session->data['customerInfo'] = $this->request->post["customer"];
+        $this->session->data['comment'] = strip_tags($this->request->post['comment']);
+
 //        p($this->request->post);
         $error = $this->model_checkout_cart->cartValidation($this->request->post);
         //p($error,$this->session->data['delInfo']);
@@ -457,6 +465,7 @@ class ControllerCheckoutCart extends Controller {
                 $json['totals'] .= sprintf($total_text, $total_item['title'],$total_item['text']);
             }
         }
+
         $this->response->setOutput(json_encode($json));
     }
 
@@ -468,7 +477,15 @@ class ControllerCheckoutCart extends Controller {
             "deliver" => array(
                 "name" => '',
                 "phone" => '',
-                "surprize" => ''
+                "surprize" => '',
+                "anonymous" => ''
+            ),
+            "company" => array(
+              "is_company" => '',
+              "name" => '',
+              "inn" => '',
+              "inn2" => '',
+              "address" => ''
             ),
             "message" => '',
             "shipping_method" => array(

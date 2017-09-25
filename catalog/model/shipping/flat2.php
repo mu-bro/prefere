@@ -13,6 +13,10 @@ class ModelShippingFlat2 extends Model {
 			$status = false;
 		}
 
+		if ($this->cart->getSubTotal() > $this->config->get('flat2_max_total')) {
+			$status = false;
+		}
+
 		$method_data = array();
 
 		if ($status) {

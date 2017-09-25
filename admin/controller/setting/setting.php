@@ -748,7 +748,8 @@ class ControllerSettingSetting extends Controller {
 			"config_store_metrics" => '',
 			"config_telephone_2" => '',
 			"config_smartsupp_key" => '',
-		  	"config_smartsupp_enabled" => ''
+		  	"config_smartsupp_enabled" => '',
+		  	"config_preorder_days" => 2
 
 
 

@@ -94,12 +94,22 @@ $_["error_customer_email"] = "Vyplňte emailovu adresu kupujícího";
 $_["error_shipping_method"] = "Vyberte způsob dopravy";
 $_["error_deliverer"] = "Vyberte si komu doručit kytici.";
 $_["text_email"] = "E-mail";
+$_["text_is_company"] = "Is company?";
+$_["text_company_info"] = "Company info";
+$_["text_company_name"] = "Company name";
+$_["text_company_inn"] = "Inn";
+$_["text_company_inn2"] = "Inn2";
 $_["error_customer_phone"] = "Vyplňte telefon v mezinárodním formátu";
 $_["text_phone"] = "Telefon v mezinárodním formátu";
 $_["error_deliver_phone"] = "Vyplňte telefon příjemce v mezinárodním formátu";
 $_["text_where_to_deliver"] = "Kam doručit kytici?";
 $_["text_make_suprize"] = 'Nepřikládejte k zásilce účet, je to dárek';
+$_["text_make_anonymous"] = 'This order strictly anonymous. Do not disclose customer info';
 $_["title_deliverer"] = "Komu doručit kytici?";
 $_["error_unavail_date"] = "Nesplnitelné datum dodání";
-
+$_["error_company_name"] = "Fill in company name";
+$_["error_company_inn"] = "Fill in company inn";
+$_["error_company_inn2"] = "Fill in company inn2";
+$_["error_company_address"] = "Fill in company address";
+$_['text_comments'] = 'Poznámka k objednávce';
 ?>

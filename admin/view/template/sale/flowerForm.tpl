@@ -179,6 +179,20 @@
                             <?php } ?>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <?php echo $text_is_anonymous; ?>:
+                        </td>
+                        <td>
+                            <?php if (isset($delInfo['deliver']['anonymous'])) { ?>
+                                <i class="fa fa-check-square-o"></i>
+                                <?php echo $text_yes; ?>
+                            <?php } else { ?>
+                                <i class="fa fa-square-o"></i>
+                                <?php echo $text_no; ?>
+                            <?php } ?>
+                        </td>
+                    </tr>
                 <?php } ?>
             </table>
         </div>
@@ -244,7 +258,8 @@
                                             <i class="fa fa-calendar"></i></button>
                                     <?php } ?>
                                 </td>
-                                <td><?php echo $delInfo['shipping_method']['info']['date']; ?></td>                                                           <td>
+                                <td><?php echo $delInfo['shipping_method']['info']['date']; ?></td>
+                                <td>
                                     <?php if ($invoice) { ?>
                                         <?php echo $delivery_time; ?>:
                                     <?php } else { ?>
@@ -270,6 +285,67 @@
                 <div class="message">
                     <?php echo $delInfo['message']; ?>
                 </div>
+            </div>
+        </div>
+    <?php } ?>
+</div>
+<div class="row">
+    <?php if (isset($delInfo['company']) && isset($delInfo['company']['is_company'])) { ?>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-user"></i> <?php echo $text_company_info; ?></h3>
+                </div>
+                <table class="table first-bold">
+                    <tr>
+                        <td style="width: 1%;">
+                            <?php if ($invoice) { ?>
+                                <?php echo $text_company_name; ?>:
+                            <?php } else { ?>
+                                <button data-toggle="tooltip" title="<?php echo $text_company_name; ?>"
+                                        class="btn btn-info btn-xs">
+                                    <i class="fa fa-users"></i></button>
+                            <?php } ?>
+                        </td>
+                        <td><?php echo $delInfo['company']['name']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?php if ($invoice) { ?>
+                                <?php echo $text_company_inn; ?>:
+                            <?php } else { ?>
+                                <button data-toggle="tooltip" title="<?php echo $text_company_inn; ?>"
+                                        class="btn btn-info btn-xs">
+                                    <i class="fa fa-bank"></i></button>
+                            <?php } ?>
+                        </td>
+                        <td><?php echo $delInfo['company']['inn']; ?></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 1%;">
+                            <?php if ($invoice) { ?>
+                                <?php echo $text_company_inn2; ?>:
+                            <?php } else { ?>
+                                <button data-toggle="tooltip" title="<?php echo $text_company_inn2; ?>"
+                                        class="btn btn-info btn-xs">
+                                    <i class="fa fa-university"></i></button>
+                            <?php } ?>
+                        </td>
+                        <td><?php echo $delInfo['company']['inn2']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?php if ($invoice) { ?>
+                                <?php echo $text_company_address; ?>:
+                            <?php } else { ?>
+                                <button data-toggle="tooltip" title="<?php echo $text_company_address; ?>"
+                                        class="btn btn-info btn-xs">
+                                    <i class="fa fa-address-card-o"></i></button>
+                            <?php } ?>
+                        </td>
+                        <td><?php echo $delInfo['company']['address']; ?></td>
+                    </tr>
+                </table>
             </div>
         </div>
     <?php } ?>

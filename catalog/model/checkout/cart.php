@@ -9,7 +9,7 @@ class ModelCheckoutCart extends Model {
 		$this->validateMessage($delInfo, $error);
 		$this->validateDeliverer($delInfo, $error);
 		$this->validateShippingMethod($delInfo, $error);
-
+		$this->validateCompany($delInfo, $error);
 //p($error,$cartInfo);
 //p($this->cart->getProducts(),$delInfo);
 
@@ -65,6 +65,26 @@ class ModelCheckoutCart extends Model {
 
 			if (empty($cartInfo['deliver']['phone'])) {
 				$error['delInfo']['deliver']['phone'] = $this->language->get('error_deliver_phone');
+			}
+		}
+	}
+
+	private function validateCompany($delInfo, &$error) {
+		if (!isset($delInfo["company"])) return;
+
+		$company = $delInfo["company"];
+		if (isset($company['is_company'])) {
+			if (empty($company['name'])) {
+				$error['delInfo']['company']['name'] = $this->language->get('error_company_name');
+			}
+			if (empty($company['inn'])) {
+				$error['delInfo']['company']['inn'] = $this->language->get('error_company_inn');
+			}
+			if (empty($company['inn2'])) {
+				$error['delInfo']['company']['inn2'] = $this->language->get('error_company_inn2');
+			}
+			if (empty($company['address'])) {
+				$error['delInfo']['company']['address'] = $this->language->get('error_company_address');
 			}
 		}
 	}

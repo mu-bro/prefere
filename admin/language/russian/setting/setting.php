@@ -299,6 +299,7 @@ $_['title_soc_in']                     = 'Инстаграм';
 $_['title_soc_pi']                     = 'Pinterest';
 $_['title_soc_fb']                     = 'FaceBook';
 $_['text_stores_list']                     = 'Список сайтов';
+$_['title_preorder_days']                     = 'Кол-во дней для предзаказа';
 
 $_['text_city']                     = 'Город';
 $_['text_link']                     = 'Ссылка';

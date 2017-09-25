@@ -1174,7 +1174,7 @@ class ControllerCatalogProduct extends Controller {
 		} elseif (!empty($product_info)) {
 			$data['points'] = $product_info['points'];
 		} else {
-			$data['points'] = '';
+			$data['points'] = -1;
 		}
 
 		if (isset($this->request->post['product_reward'])) {

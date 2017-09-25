@@ -128,6 +128,12 @@
                                             fa-times"></i></span>'; } ?></div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><?php echo $title_preorder_days; ?></label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="config_preorder_days" value="<?php echo $config_preorder_days; ?>" placeholder="<?php echo $config_preorder_day; ?>" class="form-control" />
+                                </div>
+                            </div>
                             <fieldset>
                                 <legend><?php echo $text_soc_network; ?></legend>
                                 <div class="form-group">

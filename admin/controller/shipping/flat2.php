@@ -30,6 +30,7 @@ class ControllerShippingFlat2 extends Controller {
 		$data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
+		$data['entry_max_total'] = $this->language->get('entry_max_total');
 
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
@@ -81,6 +82,12 @@ class ControllerShippingFlat2 extends Controller {
 			$data['flat2_geo_zone_id'] = $this->request->post['flat2_geo_zone_id'];
 		} else {
 			$data['flat2_geo_zone_id'] = $this->config->get('flat2_geo_zone_id');
+		}
+
+		if (isset($this->request->post['flat2_max_total'])) {
+			$data['flat2_max_total'] = $this->request->post['flat2_max_total'];
+		} else {
+			$data['flat2_max_total'] = $this->config->get('flat2_max_total');
 		}
 
 		$this->load->model('localisation/geo_zone');

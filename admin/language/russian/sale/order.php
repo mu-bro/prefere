@@ -141,6 +141,7 @@ $_['text_phone'] = 'Телефон';
 $_['text_password'] = 'Пароль';
 $_['text_confirm_password'] = 'Подтверждение пароля';
 $_['text_make_suprize'] = 'Сделать сюрприз';
+$_['text_is_anonymous'] = 'Анонимный заказ';
 $_['text_create_account'] = 'Создать аккаунт';
 
 $_['text_deliver'] = 'Получатель';
@@ -154,3 +155,9 @@ $_['delivery_time'] = 'Время доставки';
 $_['text_deliverer_info'] = 'Информация о получателе';
 $_['text_delivery'] = 'Доставка';
 $_['text_delivery_type'] = 'Тип доставки';
+
+$_['text_company_info'] = 'Данные компании';
+$_['text_company_name'] = 'Имя компании';
+$_['text_company_inn'] = 'ИНН';
+$_['text_company_inn2'] = 'ИНН2';
+$_['text_company_address'] = 'Адрес компании';
