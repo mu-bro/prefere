@@ -98,9 +98,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" for="input-admin-limit"><span data-toggle="tooltip" title="<?php echo $help_latest_time_order; ?>"><?php echo $title_latest_time_order; ?></span></label>
+                                <label class="col-sm-2 control-label" for="config_latest_time_order"><span data-toggle="tooltip" title="<?php echo $help_latest_time_order; ?>"><?php echo $title_latest_time_order; ?></span></label>
                                 <div class="col-sm-10">
                                     <input type="text" name="config_latest_time_order" value="<?php echo $config_latest_time_order; ?>" placeholder="<?php echo $config_latest_time_order; ?>" class="time form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="config_latest_outofcity_time_order"><span data-toggle="tooltip" title="<?php echo $help_latest_outofcity_time_order; ?>"><?php echo $title_latest_outofcity_time_order; ?></span></label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="config_latest_outofcity_time_order" value="<?php echo $config_latest_outofcity_time_order; ?>" placeholder="<?php echo $config_latest_outofcity_time_order; ?>" class="time form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -131,7 +137,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"><?php echo $title_preorder_days; ?></label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="config_preorder_days" value="<?php echo $config_preorder_days; ?>" placeholder="<?php echo $config_preorder_day; ?>" class="form-control" />
+                                    <input type="text" name="config_preorder_days" value="<?php echo $config_preorder_days; ?>" placeholder="<?php echo $title_preorder_days; ?>" class="form-control" />
                                 </div>
                             </div>
                             <fieldset>

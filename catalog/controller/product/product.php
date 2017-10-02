@@ -264,6 +264,8 @@ class ControllerProductProduct extends Controller {
             $data['points'] = $product_info['points'];
             $data['preorder'] = $product_info['preorder'];
             $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+            $data['textPreorderDescr'] = sprintf($this->language->get('textPreorderDescr'), $this->config->get('config_preorder_days'));
+
 
             if ($product_info['quantity'] <= 0) {
                 $data['stock'] = $product_info['stock_status'];

@@ -740,6 +740,7 @@ class ControllerSettingSetting extends Controller {
 			"config_deliver_frames" => "9.00-12.00, 12.00-15.00, 15.00-19.00",
 			"config_not_deliver_dates" => "",
 			"config_latest_time_order" => "15:00",
+			"config_latest_outofcity_time_order" => "12:00",
 			"config_soc_vk" => "",
 			"config_soc_fb" => "",
 			"config_soc_pi" => "",

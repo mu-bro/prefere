@@ -127,8 +127,8 @@ class Document {
 
         $lastTime = explode(':', $this->config->get('config_latest_time_order'));
         if (isset($lastTime[1])) {
-            $today = mktime($lastTime[0], $lastTime[1], 0, date("m"), date("d"), date("Y"));
-            if (time() > $today) {
+            $todayLastOrderTime = mktime($lastTime[0], $lastTime[1], 0, date("m"), date("d"), date("Y"));
+            if (time() > $todayLastOrderTime) {
                 $dates[] = date("d.m.Y");
             }
         }
@@ -137,12 +137,25 @@ class Document {
     }
 
     public function getDisabledPreOrderDates() {
-        $preorder = $this->config->get('title_preorder_days');
+        $preorder = (int) $this->config->get('config_preorder_days');
         $dates = $this->getDisabledDates();
-        for ($i = 1; $i <= $preorder; $i++) {
+        for ($i = 0; $i <= $preorder; $i++) {
             $dates[] = date('d.m.Y', strtotime("+$i days"));
         }
 
+        return $dates;
+    }
+
+    public function getDisabledOutOfCityDates() {
+        $dates = $this->getDisabledDates();
+        $dates[] = date("d.m.Y");
+        $lastTime = explode(':', $this->config->get('config_latest_outofcity_time_order'));
+        if (isset($lastTime[1])) {
+            $todayLastOrderTime = mktime($lastTime[0], $lastTime[1], 0, date("m"), date("d"), date("Y"));
+            if (time() > $todayLastOrderTime) {
+                $dates[] = date('d.m.Y', strtotime("+1 days"));
+            }
+        }
         return $dates;
     }
 
@@ -164,5 +177,9 @@ class Document {
 
     public function createMail($html) {
         return $this->load->controller('common/mail', $html);
+    }
+
+    public function isOutOfCityDelivery($code) {
+        return (in_array($code,array("flat.flat","flat3.flat3")));
     }
 }

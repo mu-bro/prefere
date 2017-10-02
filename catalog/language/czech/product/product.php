@@ -1,6 +1,6 @@
 <?php
 $_['textPreorder'] = '* The product is available only for pre-order';
-$_['textPreorderDescr'] = 'The product is available only for pre-order';
+$_["textPreorderDescr"] = "* Objednavky na tyto růže přijmame %s dní předem";
 $_['text_search'] = 'Vyhledat';
 $_['text_brand'] = 'Značka';
 $_['text_manufacturer'] = 'Značka:';
@@ -74,19 +74,15 @@ $_["text_option_descr_49"] = "V krabici 20 růží";
 $_["text_option_descr_50"] = "V krabici 25-30 růží";
 $_["text_option_descr_51"] = "V krabici 40 růží";
 $_["text_option_descr_60"] = "V krabici 50 kvetin";
-/* replaced "entry_fo_button" */
 $_["entry_fo_button"] = "Rychlá objednávka";
-/* replaced "text_choose_color" */
 $_["text_choose_color"] = "Vyberte si barvu květin";
-/* replaced "text_option_descr_64" */
 $_["text_option_descr_64"] = "V krabici 20 růží";
-/* replaced "text_option_descr_70" */ $_["text_option_descr_70"] = "V krabici 9-11 kvetin";
-/* replaced "text_option_descr_81" */ $_["text_option_descr_81"] = "V krabici 15 kvetin";
-/* replaced "textPreorder" */ $_["textPreorder"] = "* Objednavky na tyto růže přijmame 4 dní předem";
-/* replaced "text_option_descr_49" */ $_["text_option_descr_49"] = "";
-/* replaced "text_option_descr_50" */ $_["text_option_descr_50"] = "";
-/* replaced "text_option_descr_51" */ $_["text_option_descr_51"] = "";
-/* replaced "text_option_descr_60" */ $_["text_option_descr_60"] = "49 kvetin";
+$_["text_option_descr_70"] = "V krabici 9-11 kvetin";
+$_["text_option_descr_81"] = "V krabici 15 kvetin";
+$_["text_option_descr_49"] = "";
+$_["text_option_descr_50"] = "";
+$_["text_option_descr_51"] = "";
+$_["text_option_descr_60"] = "49 kvetin";
 $_['price_prefix']            = 'od';
 $_['txt_video_title']            = 'Take a look to our bouquet\'s video';
 ?>

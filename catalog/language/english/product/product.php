@@ -1,6 +1,6 @@
 <?php
 $_['textPreorder'] = '* The product is available only for pre-order';
-$_['textPreorderDescr'] = 'The product is available only for pre-order';
+$_['textPreorderDescr'] = 'Delivery will be available in %s days';
 $_['text_search'] = 'Search';
 $_['text_brand'] = 'Brand';
 $_['text_manufacturer'] = 'Brand:';

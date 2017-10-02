@@ -112,4 +112,5 @@ $_["error_company_inn"] = "Fill in company inn";
 $_["error_company_inn2"] = "Fill in company inn2";
 $_["error_company_address"] = "Fill in company address";
 $_['text_comments'] = 'Poznámka k objednávce';
+$_["source_found_text"] = "Where did you find us:";
 ?>

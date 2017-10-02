@@ -73,4 +73,5 @@ $_["error_company_name"] = "Заполните имя компании";
 $_["error_company_inn"] = "Заполните ИНН компании";
 $_["error_company_inn2"] = "Заполните ИНН2 компании";
 $_["error_company_address"] = "Заполните адрес компании";
+$_["source_found_text"] = "Откуда вы о нас узнали:";
 ?>

@@ -748,6 +748,10 @@ class ControllerSaleOrder extends Controller {
 			$data['payment_method'] = $order_info['payment_method'];
 			$data['delInfo'] = unserialize($order_info['del_info']);
 
+			if (isset($data['delInfo']['source_found'])  && !empty($data['delInfo']['source_found'])) {
+				$data['source'] = $data['delInfo']['source_found'];
+			}
+
 			// Payment Address
 			if ($order_info['payment_address_format']) {
 				$format = $order_info['payment_address_format'];
@@ -1550,7 +1554,6 @@ class ControllerSaleOrder extends Controller {
 
 					$product_data[] = array(
 						'name'     => $product['name'],
-						'delInfo'  => unserialize($product['del_info']),
 						'model'    => $product['model'],
 						'option'   => $option_data,
 						'quantity' => $product['quantity'],

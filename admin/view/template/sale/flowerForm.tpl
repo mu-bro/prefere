@@ -349,4 +349,28 @@
             </div>
         </div>
     <?php } ?>
+
+    <?php if (isset($source)) { ?>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-user"></i> <?php echo $text_source_find; ?></h3>
+                </div>
+                <table class="table first-bold">
+                    <tr>
+                        <td style="width: 1%;">
+                            <?php if ($invoice) { ?>
+                                <?php echo $text_source_find; ?>:
+                            <?php } else { ?>
+                                <button data-toggle="tooltip" title="<?php echo $text_source_find; ?>"
+                                        class="btn btn-info btn-xs">
+                                    <i class="fa fa-apple" aria-hidden="true"></i></button>
+                            <?php } ?>
+                        </td>
+                        <td><?php echo $source; ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    <?php } ?>
 </div>

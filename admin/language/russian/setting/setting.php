@@ -292,6 +292,9 @@ $_['help_not_deliver_dates']                 = 'Даты, на которые н
 $_['title_latest_time_order']                 = 'Позднее время заказа';
 $_['help_latest_time_order']                 = 'Время, после которого заказ на текущее число запрещён';
 
+$_['title_latest_outofcity_time_order']                 = 'Позднее время заказа (вне Праги)';
+$_['help_latest_outofcity_time_order']                 = 'Время, после которого доставка вне Праги на завтрашнее число запрещёна';
+
 $_['text_soc_network']                 = 'Социальные сети';
 
 $_['title_soc_vk']                     = 'Контакт';

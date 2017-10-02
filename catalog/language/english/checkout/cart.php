@@ -53,7 +53,7 @@ $_['error_message_length'] = 'Text must not be more then 250 signs';
 $_['text_apply_for_all_flowers'] = 'Apply the delivery information to all bouquets';
 $_["text_success"] = "Success: You have added <a href=\"%s\">%s</a> to your <a href=\"%s\">shopping cart</a>!";
 $_["text_flower_message_placeholder"] = "no more then 250 signs";
-$_['text_comments']                  = 'Add Comments About Your Order';
+$_['text_comments'] = 'Add Comments About Your Order';
 $_["delivery_date"] = "Date";
 $_["text_flower_message"] = "Text for the giftcard";
 $_["title_deliver_info"] = "Information about delivery";
@@ -96,4 +96,5 @@ $_["error_company_name"] = "Fill in company name";
 $_["error_company_inn"] = "Fill in company inn";
 $_["error_company_inn2"] = "Fill in company inn2";
 $_["error_company_address"] = "Fill in company address";
+$_["source_found_text"] = "Where did you find us:";
 ?>

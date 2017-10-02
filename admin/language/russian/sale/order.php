@@ -161,3 +161,5 @@ $_['text_company_name'] = 'Имя компании';
 $_['text_company_inn'] = 'ИНН';
 $_['text_company_inn2'] = 'ИНН2';
 $_['text_company_address'] = 'Адрес компании';
+
+$_['text_source_find'] = 'Источник';

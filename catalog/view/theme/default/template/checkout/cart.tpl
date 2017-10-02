@@ -72,6 +72,7 @@
                         <?php include "catalog/view/theme/default/template/checkout/cart/flowerForm.tpl"; ?>
                     </div>
                 </div>
+                <input type="hidden" name="delInfo[source_found]" id="source_found" value="<?php if (isset($delInfo['source_found'])) echo $delInfo['source_found']; ?>" />
             </form>
             <div class="row">
                 <div class="col-lg-4 couponCartBlock">
@@ -93,9 +94,20 @@
                     </table>
                 </div>
             </div>
-            <div class="buttons">
-                <div class="pull-right"><a href="javascript: void(0);" onclick="sendCart();"
-                                           class="btn btn-primary"><?php echo $button_checkout; ?></a></div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="buttons">
+                        <div class="pull-right">
+                            <a href="javascript: void(0);" onclick="sendCart();"
+                               class="btn btn-primary"><?php echo $button_checkout; ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <?php include "catalog/view/theme/default/template/checkout/cart/source_find.tpl"; ?>
+                </div>
             </div>
             <?php echo $content_bottom; ?></div>
         <?php echo $column_right; ?></div>
@@ -148,11 +160,13 @@
     $('.date').datetimepicker({
         pickTime: false,
         disabledDates: ['<?php echo implode("','",$excludeDates) ?>'],
+        minDate: new Date(),
         locale: 'en'
     });
-    $('.datePreOrder').datetimepicker({
+    $('.outOfCityDate').datetimepicker({
         pickTime: false,
-        disabledDates: ['<?php echo implode("','",$excludePreorderDates) ?>'],
+        disabledDates: ['<?php echo implode("','",$excludeOutOfCityDates) ?>'],
+        minDate: new Date(),
         locale: 'en'
     });
     $('.datePickerGroup button').on('click', function () {

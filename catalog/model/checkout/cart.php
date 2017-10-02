@@ -153,6 +153,9 @@ class ModelCheckoutCart extends Model {
 					$quote = $this->{'model_shipping_' . $result['code']}->getQuote($shipping_address);
 
 					if ($quote) {
+						$shipping_code = $quote['quote'][$result['code']]['code'];
+						$quote['quote'][$result['code']]['outOfCity'] = $this->document->isOutOfCityDelivery($shipping_code);
+
 						$method_data[$result['code']] = array(
 							'title' => $quote['title'],
 							'quote' => $quote['quote'],

@@ -29,12 +29,6 @@ class ControllerCheckoutCart extends Controller {
             $data["customerInfo"] = $this->session->data['customerInfo'];
         }
 
-        $data['config_telephone_mask'] = $this->config->get("config_telephone_mask");
-        $data['excludeDates'] = $this->document->getDisabledDates();
-        $data['excludePreorderDates'] = $this->document->getDisabledPreOrderDates();
-        $data['defaultDate'] = $this->document->getDefaultDate();
-        $data['deliver_frames'] = explode(",", str_replace(" ","",$this->config->get("config_deliver_frames")));
-
         if (isset($this->session->data['comment'])) {
             $data['comment'] = $this->session->data['comment'];
         } else {
@@ -194,6 +188,13 @@ class ControllerCheckoutCart extends Controller {
             $data['delInfo'] = isset($this->session->data['delInfo']) ? $this->session->data['delInfo'] :
                 $this->delInfoObject();
             $data['preorder'] = $preorder;
+
+            $data['config_telephone_mask'] = $this->config->get("config_telephone_mask");
+            $data['excludeDates'] = $preorder ? $this->document->getDisabledPreOrderDates() : $this->document->getDisabledDates();
+//            $data['excludePreorderDates'] = $this->document->getDisabledPreOrderDates();
+            $data['excludeOutOfCityDates'] = $this->document->getDisabledOutOfCityDates();
+            $data['defaultDate'] = $this->document->getDefaultDate();
+            $data['deliver_frames'] = explode(",", str_replace(" ","",$this->config->get("config_deliver_frames")));
 
             // Gift Voucher
             $data['vouchers'] = array();
@@ -540,5 +541,14 @@ class ControllerCheckoutCart extends Controller {
             );
         }
         return array($data['totals'],$total);
+    }
+
+    public function updatesource() {
+        if (isset($this->request->post['source'])) {
+            $source = $this->request->post['source'];
+        } else {
+            $source = '';
+        }
+        $this->session->data['delInfo']['source_found'] = $source;
     }
 }

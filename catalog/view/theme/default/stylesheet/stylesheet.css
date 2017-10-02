@@ -2152,3 +2152,12 @@ body .row p img
 		display:flex;
 	}
 }
+.source_found td {
+	padding-right:10px;
+}
+.source_found td i.half-hidden {
+	opacity: 0.5;
+}
+.source_found td i:hover {
+	cursor:pointer;
+}
