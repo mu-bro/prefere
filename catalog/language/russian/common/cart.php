@@ -1,6 +1,6 @@
 <?php
 // Text
-$_['text_items'] = '(%s)';
+$_['text_items'] = '%s';
 $_['text_empty'] = 'В корзине пусто';
 $_['text_cart'] = 'Закрыть корзину';
 $_['text_checkout'] = 'Оформить Заказ';

@@ -24,7 +24,7 @@ $data = array_merge( isset($data) ? $data : array() , $this->load->language('com
 			}
 		}
 
-		$data['currentLanguage'] = $results[$data['code']]['name'];
+		$data['currentLanguage'] = $results[$data['code']]['code'];
 
 		if (!isset($this->request->get['route'])) {
 			$data['redirect'] = $this->url->link('common/home');

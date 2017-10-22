@@ -17,7 +17,8 @@ $_['text_search'] = 'Поиск';
 $_['text_all'] = 'Показать все';
 $_['text_page'] = 'страница';
 $_['text_cart'] = 'Корзина';
-$_['text_items'] = '(%s)'; $_['text_join_us'] = 'Присоединяйтесь к нам!';
+$_['text_items'] = '%s';
+$_['text_join_us'] = 'Присоединяйтесь к нам!';
 $_['title_soc_vk'] = 'Контакт';
 $_['title_soc_in'] = 'Инстаграм';
 $_['title_soc_pi'] = 'Pinterest';
@@ -27,15 +28,12 @@ $_['text_language'] = 'Язык';
 $_['text_telephone_info'] = 'Звоните уже сейчас для быстрого заказа!'; 
 /* replaced "text_login" */ $_["text_login"] = "Войти";
 
-$_['telephone_label'] = 'Чехия';
-$_['telephone_label_2'] = 'Словакия';
-
 $_["text_free_delivery"] = "Free delivery<span>(from 1500kc)</span>";
 $_["text_fowers_descr"] = "Flowers <br/> for everyone";
 /* replaced "text_checkout" */ $_["text_checkout"] = "Ваш заказ";
 /* replaced "text_telephone_info" */ $_["text_telephone_info"] = "Звоните уже сейчас для быстрого заказа!";
 /* replaced "text_free_delivery" */ $_["text_free_delivery"] = "Бесплатная доставка по Праге при заказе от 1200 кч";
 /* replaced "text_fowers_descr" */ $_["text_fowers_descr"] = "Самые свежие<br/> цветы";
-/* replaced "telephone_label" */ $_["telephone_label"] = "CZ";
-/* replaced "telephone_label_2" */ $_["telephone_label_2"] = "ENG/RU";
+$_["telephone_label"] = "CZ";
+$_["telephone_label_2"] = "ENG/RU";
 ?>

@@ -2,13 +2,18 @@
 class ControllerCommonFooter extends Controller {
 	public function index() {
 
-$data = array_merge( isset($data) ? $data : array() , $this->load->language('common/footer'));
+		$headerData = $this->load->language('common/header');
+		$data['telephone_label'] = $headerData['telephone_label'];
+		$data['telephone_label_2'] = $headerData['telephone_label_2'];
+
+		$data = array_merge( isset($data) ? $data : array() , $this->load->language('common/footer'));
 
 		$data['scripts'] = $this->document->getScripts('footer');
 
 
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 		$data['telephone'] = $this->config->get('config_telephone');
+		$data['telephone_2'] = $this->config->get('config_telephone_2');
 
 		if (!isset($this->session->data['preload'])) {
 			$this->session->data['preload'] = true;

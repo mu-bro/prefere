@@ -1,5 +1,7 @@
-<?php foreach ($products as $product) { ?>
-    <div class="product-layout product-grid col-lg-15 col-md-15 col-sm-6 col-xs-12">
+<?php
+    if (!isset($column_class)) $column_class = "col-lg-4 col-md-4 col-sm-6 col-xs-6";
+    foreach ($products as $product) { ?>
+    <div class="product-layout product-grid <?php echo $column_class; ?>">
         <div class="product-thumb">
             <div class="image"><a href="<?php echo $product['href']; ?>"><img
                         src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>"

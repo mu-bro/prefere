@@ -1,10 +1,5 @@
 <?php echo $header; ?>
-<div class="container">
-    <ul class="breadcrumb">
-        <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-            <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-        <?php } ?>
-    </ul>
+<div class="main-container">
     <?php if ($attention) { ?>
         <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $attention; ?>
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -29,17 +24,18 @@
             <?php $class = 'col-sm-12'; ?>
         <?php } ?>
         <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-            <h1><?php echo $heading_title; ?>
-                <?php if ($weight) { ?>
-                    &nbsp;(<?php echo $weight; ?>)
-                <?php } ?>
-            </h1>
-
             <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="cartForm">
-                <div class="cartBlock checkout delInfo">
+                <div class="container cartBlock centralBlock checkout delInfo">
+                    <h1>
+                        <span><?php echo $heading_title; ?>
+                            <?php if ($weight) { ?>
+                                &nbsp;(<?php echo $weight; ?>)
+                            <?php } ?>
+                        </span>
+                    </h1>
                     <div class="row">
                         <div class="col-lg-12">
-                            <table class="table">
+                            <table class="table cartProductTable">
                                 <thead>
                                 <tr>
                                     <th colspan="2"><?php echo $column_name; ?></th>
@@ -58,55 +54,56 @@
                             </table>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-5 cartProductInfo">
-                            <h3><?php echo $text_flower_message; ?></h3>
-                                <textarea
-                                    id="message"
-                                    maxlength="250"
-                                    name="delInfo[message]" class="form-control"
-                                    placeholder="<?php echo $text_flower_message_placeholder; ?>"><?php echo $delInfo['message']; ?></textarea>
+                    <div class="row continueRow">
+                        <div class="col-sm-6">
+                            <a class="linkButton" href="<?php echo $continue; ?>"><?php echo $button_shopping; ?></a>
+                        </div>
+                        <div class="col-sm-6">
+                            <?php include "catalog/view/theme/default/template/checkout/cart/totals.tpl"; ?>
                         </div>
                     </div>
+                </div>
+                <div class="messageBlock row">
+                    <h3><?php echo $text_flower_message; ?></h3>
+                    <textarea
+                        id="message"
+                        maxlength="250"
+                        name="delInfo[message]" class="form-control"
+                        placeholder="<?php echo $text_flower_message_placeholder; ?>"><?php echo $delInfo['message']; ?></textarea>
+                </div>
+                <div class="container cartBlock delInfo">
                     <div class="row" id="flowerForm">
                         <?php include "catalog/view/theme/default/template/checkout/cart/flowerForm.tpl"; ?>
                     </div>
                 </div>
-                <input type="hidden" name="delInfo[source_found]" id="source_found" value="<?php if (isset($delInfo['source_found'])) echo $delInfo['source_found']; ?>" />
+                <input type="hidden"
+                       name="delInfo[source_found]"
+                       id="source_found"
+                       value="<?php if (isset($delInfo['source_found'])) echo $delInfo['source_found']; ?>"/>
             </form>
-            <div class="row">
-                <div class="col-lg-4 couponCartBlock">
-                    <?php echo $coupon; ?>
+            <div class="container delInfo" id="additions">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 couponCartBlock">
+                        <?php echo $coupon; ?>
+                    </div>
+                    <div class="col-sm-6 col-xs-12 text-right couponCartBlock">
+                        <?php echo $reward; ?>
+                    </div>
                 </div>
-                <div class="col-lg-5 col-lg-offset-3 text-right couponCartBlock">
-                    <?php echo $reward; ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <table class="table cartTotals" id="cartBlock">
-                        <?php foreach ($totals as $total) { ?>
-                            <tr>
-                                <td class="text-right"><?php echo $total['title']; ?>:</td>
-                                <td class="text-right total"><?php echo $total['text']; ?></td>
-                            </tr>
-                        <?php } ?>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="buttons">
-                        <div class="pull-right">
-                            <a href="javascript: void(0);" onclick="sendCart();"
-                               class="btn btn-primary"><?php echo $button_checkout; ?></a>
+                <div class="row">
+                    <div class="col-sm-12 text-center totalBlock">
+                        <div class="bottomTotals">
+                            <?php include "catalog/view/theme/default/template/checkout/cart/totals.tpl"; ?>                                       </div>
+                        <div class="buttons">
+                                <a href="javascript: void(0);" onclick="sendCart();"
+                                   class="btn btn-primary"><?php echo $button_checkout; ?></a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <?php include "catalog/view/theme/default/template/checkout/cart/source_find.tpl"; ?>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <?php include "catalog/view/theme/default/template/checkout/cart/source_find.tpl"; ?>
+                    </div>
                 </div>
             </div>
             <?php echo $content_bottom; ?></div>
@@ -141,8 +138,13 @@
         $(choosenBlock).slideDown();
 
     });
+    $('.couponCartBlock input[name="additions"]').on('change', function () {
+        $('.additionBlock').hide();
+        itemValue = $(this).val();
+        $('.additionBlock#' + itemValue + '-block').show();
+    });
 
-    $('.quantity select').on('change', function () {
+    $('.quantity input').on('change', function () {
         var cartId = $(this).attr('rel');
         var quantity = $(this).val();
         updateProductQuantity(this, cartId, quantity);

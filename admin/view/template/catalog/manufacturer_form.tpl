@@ -34,7 +34,7 @@
               <?php } ?>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group hidden">
             <label class="col-sm-2 control-label"><?php echo $entry_store; ?></label>
             <div class="col-sm-10">
               <div class="well well-sm" style="height: 150px; overflow: auto;">
@@ -65,7 +65,7 @@
               </div>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group hidden">
             <label class="col-sm-2 control-label" for="input-keyword"><span data-toggle="tooltip" title="<?php echo $help_keyword; ?>"><?php echo $entry_keyword; ?></span></label>
             <div class="col-sm-10">
               <input type="text" name="keyword" value="<?php echo $keyword; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
@@ -80,7 +80,7 @@
               <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group hidden">
             <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
             <div class="col-sm-10">
               <input type="text" name="sort_order" value="<?php echo $sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />

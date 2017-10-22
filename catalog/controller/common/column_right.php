@@ -55,6 +55,7 @@ class ControllerCommonColumnRight extends Controller {
 			if (isset($part[1])) {
 				$setting_info = $this->model_extension_module->getModule($part[1]);
 				$setting_info['module_id'] = $part[1];
+				$setting_info['position'] = $module['position'];
 
 				if ($setting_info && $setting_info['status']) {
 					$data['modules'][] = $this->load->controller('module/' . $part[0], $setting_info);

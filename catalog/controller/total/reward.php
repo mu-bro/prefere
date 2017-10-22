@@ -65,7 +65,7 @@ class ControllerTotalReward extends Controller {
 
         if (!$json) {
             $this->session->data['reward'] = abs($this->request->post['reward']);
-
+            unset($this->session->data['coupon']);
             $json['success'] = $this->language->get('text_success');
 
             $this->load->model('checkout/total');

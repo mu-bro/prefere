@@ -182,7 +182,6 @@ class ControllerProductProduct extends Controller {
         $this->load->model('catalog/product');
 
         $product_info = $this->model_catalog_product->getProduct($product_id);
-
         if ($product_info) {
             $url = '';
 
@@ -259,13 +258,14 @@ class ControllerProductProduct extends Controller {
             $data['product_id'] = (int)$this->request->get['product_id'];
             $data['manufacturer'] = $product_info['manufacturer'];
             $data['manufacturers'] = $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $product_info['manufacturer_id']);
+
+
             $data['model'] = $product_info['model'];
             $data['reward'] = $product_info['reward'];
             $data['points'] = $product_info['points'];
             $data['preorder'] = $product_info['preorder'];
             $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
             $data['textPreorderDescr'] = sprintf($this->language->get('textPreorderDescr'), $this->config->get('config_preorder_days'));
-
 
             if ($product_info['quantity'] <= 0) {
                 $data['stock'] = $product_info['stock_status'];
@@ -276,6 +276,10 @@ class ControllerProductProduct extends Controller {
             }
 
             $this->load->model('tool/image');
+
+            if (isset($product_info['manufacturer_image'])) {
+                $data['manufacturer_image'] = $this->config->get('config_url') . 'image/' .  $product_info['manufacturer_image'];
+            }
 
             if ($product_info['image']) {
                 $data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));
@@ -366,6 +370,7 @@ class ControllerProductProduct extends Controller {
                             'value_image_popup' => $popup,
                             'image' => $this->model_tool_image->resize($option_value['image'], 78, 78),
                             'price' => $price,
+                            'price_plane' => ($option_value['price_prefix'] == '+') ? $option_value['price'] : -$option_value['price'],
                             'price_prefix' => $option_value['price_prefix']
                         );
                     }
@@ -749,6 +754,46 @@ class ControllerProductProduct extends Controller {
         $mail->send();
 
         $json = array("success" => true);
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
+    }
+    public function price() {
+        $this->load->model('catalog/product');
+        if (isset($this->request->post['option'])) {
+            $options = array_filter($this->request->post['option']);
+        } else {
+            $options = array();
+        }
+
+        $option_price = 0;
+        $product_info = $this->model_catalog_product->getProduct($this->request->get['product_id']);
+        $product_options = $this->model_catalog_product->getProductOptions($this->request->get['product_id']);
+
+        foreach ($product_options as $product_option) {
+            if (isset($options[$product_option['product_option_id']])) {
+                $option = $options[$product_option['product_option_id']];
+                foreach ($product_option['product_option_value'] as $product_option_value) {
+                    if (in_array($product_option['type'], array('select','radio' ,'image')) && $option == $product_option_value['product_option_value_id']) {
+                        if ($product_option_value['price_prefix'] == '+') {
+                            $option_price += $product_option_value['price'];
+                        } elseif ($product_option_value['price_prefix'] == '-') {
+                            $option_price -= $product_option_value['price'];
+                        }
+                    } elseif ($product_option['type'] == 'checkbox' && is_array($option) && in_array($product_option_value['product_option_value_id'],$option)) {
+                        if ($product_option_value['price_prefix'] == '+') {
+                            $option_price += $product_option_value['price'];
+                        } elseif ($product_option_value['price_prefix'] == '-') {
+                            $option_price -= $product_option_value['price'];
+                        }
+                    }
+                }
+            }
+        }
+        $price = isset($product_info['special']) ? $product_info['special'] : $product_info['price'];
+        $total_plane = $price + $option_price;
+        $total = $this->currency->format($this->tax->calculate($total_plane, $product_info['tax_class_id'], $this->config->get('config_tax')));
+
+        $json =  array("price" => $total, "points" => (int) $total_plane / 10);
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));
     }

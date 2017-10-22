@@ -178,7 +178,7 @@ $data = array_merge( isset($data) ? $data : array() , $this->load->language('pro
 			}
 
 			$data['sorts'] = $this->document->createSort(array(), $url);
-
+//p($data['sorts']);
 			$url = '';
 
 			if (isset($this->request->get['filter'])) {

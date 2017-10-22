@@ -14,7 +14,7 @@ class ControllerModuleFilterPro extends Controller {
         if (isset($this->request->get['sort'])) {
             $sort = $this->request->get['sort'];
         } else {
-            $sort = 'p.sort_order, p.product_id';
+            $sort = 'p.sort_order';
         }
 
         if (isset($this->request->get['order'])) {
@@ -83,8 +83,8 @@ class ControllerModuleFilterPro extends Controller {
         }
 
 
-        if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/filterpro.tpl')) {
-            return $this->load->view($this->config->get('config_template') . '/template/module/filterpro.tpl', $data);
+        if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/filterpro_new.tpl')) {
+            return $this->load->view($this->config->get('config_template') . '/template/module/filterpro_new.tpl', $data);
         } else {
             return $this->load->view('default/template/module/filterpro.tpl', $data);
         }

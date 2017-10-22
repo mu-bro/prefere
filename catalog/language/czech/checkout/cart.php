@@ -4,7 +4,7 @@ $_['langs'] = 'cz';
 $_['text_success'] = 'Úspěch: Do <a href="%s">nákupního košíku</a> jste přidali <a href="%s"> %s</a>!';
 $_['text_remove'] = 'Úspěch: Obsah nákupního košíku byl změněn!';
 $_['text_login'] = 'Upozornění: Pro zobrazení cen je nutné se <a href="%s">přihlásit</a> nebo <a href="%s"> zaregistorvat</a>!';
-$_['text_items'] = '(%s)';
+$_['text_items'] = '%s';
 $_['text_points'] = 'Věrnostní body: %s';
 $_['text_next'] = 'Co chcete udělat dále?';
 $_['text_next_choice'] = 'Vyberte, zda chcete uplatnit slevový kupón nebo věrnostní body a nebo chcete vypočítat přibližnou cenu za dopravu.';

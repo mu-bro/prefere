@@ -3,7 +3,6 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4 first">
-                <h5><a href="<?php echo $blog; ?>"><?php echo $text_read_our_blog; ?></a></h5>
 				<div class="purchaseIcons">
                     <img src="catalog/view/theme/default/image/gopay_bannery-modre.png">
                     <img src="catalog/view/theme/default/image/pay/pay5.png">
@@ -16,11 +15,23 @@
                     <img class="big" src="catalog/view/theme/default/image/pay/pay3.png">
 
                 </div>
+                <h5><a href="<?php echo $blog; ?>"><?php echo $text_read_our_blog; ?></a></h5>
             </div>
             <div class="col-sm-4 text-center">
-                <div class="annabelle"><?php echo $text_call_for_order; ?></div>
+                <p class="powered"><?php echo $powered; ?></p>
+            </div>
+            <div class="col-sm-4 third">
                 <div class="topPhone">
-                    <div class="phone"><?php echo $telephone; ?></div>
+                    <div class="phone">
+                        <span><?php echo $telephone_label; ?>:</span>
+                        <?php echo $telephone; ?>
+                    </div>
+                    <?php if (!empty($telephone_2)) { ?>
+                        <div class="phone">
+                            <span><?php echo $telephone_label_2; ?>:</span>
+                            <?php echo $telephone_2; ?>
+                        </div>
+                    <?php } ?>
                 </div>
                 <div class="socLinks">
                     <?php foreach ($soc_icons as $soc => $link) { ?>
@@ -33,9 +44,6 @@
                         </div>
                     <?php } ?>
                 </div>
-                <p class="powered"><?php echo $powered; ?></p>
-            </div>
-            <div class="col-sm-4 third">
                 <?php foreach ($modules as $module) { ?>
                     <?php echo $module; ?>
                 <?php } ?>

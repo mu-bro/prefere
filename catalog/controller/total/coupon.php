@@ -40,7 +40,7 @@ $data = array_merge( isset($data) ? $data : array() , $this->load->language('tot
 			unset($this->session->data['coupon']);
 		} elseif ($coupon_info) {
 			$this->session->data['coupon'] = $this->request->post['coupon'];
-
+			unset($this->session->data['reward']);
 			$json['success'] = $this->language->get('text_success');
 
 			$this->load->model('checkout/total');

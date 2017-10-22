@@ -23,6 +23,44 @@ function getURLVar(key) {
 }
 
 $(document).ready(function () {
+
+
+
+
+    $('.input-number').each(function () {
+        var name = $(this).attr("name");
+        $(this).before( '<span class="input-group-btn"><button type="button" class="btn btn-default btn-number" data-type="minus" data-field="'+ name +'"><span class="glyphicon glyphicon-minus"></span></button></span>');
+        $(this).after('<span class="input-group-btn"><button type="button" class="btn btn-default btn-number" data-type="plus" data-field="'+ name +'"><span class="glyphicon glyphicon-plus"></span></button></span>');
+    });
+    $('.btn-number').click(function (e) {
+        e.preventDefault();
+
+        fieldName = $(this).attr('data-field');
+        type = $(this).attr('data-type');
+        var input = $("input[name='" + fieldName + "']");
+        var currentVal = parseInt(input.val());
+        if (!isNaN(currentVal)) {
+            input.parent().find('.btn-number').removeAttr('disabled');
+            if (type == 'minus') {
+                if (currentVal > input.attr('min')) {
+                    input.val(currentVal - 1).change();
+                }
+                if (parseInt(input.val()) == input.attr('min')) {
+                    $(this).attr('disabled', true);
+                }
+            } else if (type == 'plus') {
+                if (currentVal < input.attr('max')) {
+                    input.val(currentVal + 1).change();
+                }
+                if (parseInt(input.val()) == input.attr('max')) {
+                    $(this).attr('disabled', true);
+                }
+            }
+        } else {
+            input.val(0);
+        }
+    });
+
     // Highlight any found errors
     $('.text-danger').each(function () {
         var element = $(this).parent().parent();
@@ -523,7 +561,7 @@ function sendCart() {
                         $("#flowerForm #message").after("<span class='error'>" + json['error']['delInfo']['message'] + "</span>");
                     }
                     if (json['error']['delInfo']['deliverer']) {
-                        $("#flowerForm #chooseBlock").after("<span class='error'>" + json['error']['delInfo']['deliverer'] + "</span>");
+                        $("#flowerForm #chooseBlock").before("<span class='error'>" + json['error']['delInfo']['deliverer'] + "</span>");
                     }
                     if (json['error']['delInfo']['shipping_method']) {
                         if (json['error']['delInfo']['shipping_method']['code']) {
@@ -616,14 +654,14 @@ function updateProductQuantity(selectItem, cartId, quantity) {
         data: 'cartId=' + cartId + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
         dataType: 'json',
         beforeSend: function () {
-            $(selectItem).after('<i class="fa fa-spinner fa-spin"></i>');
+            //$(selectItem).next().after('<i class="fa fa-spinner fa-spin"></i>');
         },
         complete: function () {
-            $(selectItem).next('i.fa-spinner').remove();
+            //$(selectItem).next().next('i.fa-spinner').remove();
         },
         success: function (json) {
-            $('#cartProduct' + cartId + ' .price').text(json['price']);
-            $('#cartBlock').html(json['totals']);
+            $('#cartProduct' + cartId + ' .total').text(json['price']);
+            $('.cartTotals').html(json['totals']);
         }
     });
 }

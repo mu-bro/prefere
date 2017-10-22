@@ -9,7 +9,7 @@ class ControllerCheckoutCart extends Controller {
 
         $this->load->model('checkout/cart');
         $data["shipping_methods"] = $this->model_checkout_cart->getShippingMethods();
-//unset($this->session->data['delInfo']['shipping_method']);
+//p($this->session->data['delInfo']);
         $data["isLogged"] = $this->customer->isLogged();
         if (!isset($this->session->data['customerInfo'])) {
             if ($this->customer->isLogged()) {
@@ -549,6 +549,8 @@ class ControllerCheckoutCart extends Controller {
         } else {
             $source = '';
         }
-        $this->session->data['delInfo']['source_found'] = $source;
+        if (isset($this->session->data['delInfo'])) {
+            $this->session->data['delInfo']['source_found'] = $source;
+        }
     }
 }

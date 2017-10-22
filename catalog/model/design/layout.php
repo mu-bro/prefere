@@ -62,17 +62,14 @@ class ModelDesignLayout extends Model {
 		$modules_html = array();
 		$modules = $this->model_design_layout->getLayoutModules($layout_id, $shema);
 		$modules = array_merge($modules, $this->model_design_layout->getLayoutModules(0, $shema));
-
 		foreach ($modules as $module) {
 			$part = explode('.', $module['code']);
 
 			if (isset($part[0]) && $this->config->get($part[0] . '_status')) {
 				$modules_html[] = $this->load->controller('module/' . $part[0]);
-			}
 
-			if (isset($part[1])) {
+			} elseif (isset($part[1])) {
 				$setting_info = $this->model_extension_module->getModule($part[1]);
-
 				if ($setting_info && $setting_info['status']) {
 					$setting_info['module_id'] = $part[1];
 					$modules_html[] = $this->load->controller('module/' . $part[0], $setting_info);

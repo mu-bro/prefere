@@ -94,9 +94,9 @@ class Document {
             'pd.name-ASC' => 'text_name_asc',
             'pd.name-DESC' => 'text_name_desc',
             'p.price-ASC' => 'text_price_asc',
-            'p.price-DESC' => 'text_price_desc',
-            'p.model-ASC' => 'text_model_asc',
-            'p.model-DESC' => 'text_model_desc',
+            'p.price-DESC' => 'text_price_desc'
+//            'p.model-ASC' => 'text_model_asc',
+//            'p.model-DESC' => 'text_model_desc',
         );
 
         if ($this->config->get('config_review_status')) {

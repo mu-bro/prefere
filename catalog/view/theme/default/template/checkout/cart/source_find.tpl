@@ -2,9 +2,9 @@
     <table cellpadding="0"  cellspacing="0">
         <tr>
             <td><?php echo $source_found_text; ?></td>
-            <td><i class="fa fa-facebook-square" aria-hidden="true" title="Facebook"></i></td>
-            <td><i class="fa fa-instagram" aria-hidden="true" title="Instagram"></i></td>
-            <td><i class="fa fa-vk" aria-hidden="true" title="Vkontakte"></i></td>
+            <td><i class="fa fa-facebook-square" aria-hidden="true" id="soc-Facebook" title="Facebook"></i></td>
+            <td><i class="fa fa-instagram" aria-hidden="true" id="soc-Instagram" title="Instagram"></i></td>
+            <td><i class="fa fa-vk" aria-hidden="true" id="soc-Vkontakte" title="Vkontakte"></i></td>
         </tr>
     </table>
 </div>
@@ -26,4 +26,10 @@
             dataType: 'json'
         });
     });
+    <?php if (isset($delInfo['source_found'])) { ?>
+    $(function () {
+        $('.source_found td i').addClass('half-hidden');
+        $('#soc-<?php echo $delInfo['source_found']; ?>').removeClass('half-hidden').addClass('active');
+    });
+    <?php } ?>
     //--></script>

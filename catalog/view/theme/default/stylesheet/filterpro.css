@@ -1,10 +1,35 @@
+.filterProPanel {
+	border: 5px solid #fbd8d5;
+	background: transparent;
+	border-radius: 0px;
+}
+.filterProPanel .list-group-item {
+	padding:0px;
+}
 #filterpro {
 	margin:0 0 0 0px;
 	display: block;
-	border-top:1px solid #c4c4c4;
-	border-bottom:1px solid #c4c4c4;
 }
-
+#filterpro .attrBox {
+	margin: 15px 20px 20px 20px;
+}
+#filterpro .optionElem {
+	float:left;
+	overflow: hidden;
+	position:relative;
+	margin-right: 14px;
+}
+#filterpro .optionElem.disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+#filterpro .optionElem.disabled label {
+	cursor: not-allowed;
+}
+#filterpro .optionElem input[type="checkbox"] {
+	position:absolute;
+	left:-99999px;
+}
 #filterpro .option_box {
     display: block;
 }
@@ -36,10 +61,10 @@
 	box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 #filterpro .ui-slider .ui-state-default {
-	background: #e6d6d6;
-	box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
+	background: #fbd8d5;
+	box-shadow: inset 0px 0px 1px 0px rgba(0, 0, 0, 0.3);
 
-	border-radius: 30px;
+	border-radius: 4px;
 	color: #414141;
 	font-size:10px;
 	padding: 0px 5px;
@@ -66,8 +91,8 @@
 
 
 #filterpro .ui-widget-header {
-	background: #E6D6D6;
-	box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+	background: #fbd8d5;
+	box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.22);
 	height: 5px;
 }
 
@@ -93,10 +118,14 @@
 
 }
 #filterpro .price_slider label {
-	display: block;
-	color: #414141;
+	font-size: 19px;
+	font-family: 'playfair_displayblack';
+	color: #000;
 	text-transform: uppercase;
-	font-weight: 400;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #d7aeaa;
+	display: block;
+	padding: 10px 20px 10px 20px;
 }
 #filterpro .price_slider td {
 	font-size:12px;
@@ -142,13 +171,13 @@
 }
 
 #filterpro .option_name, #filterpro .attribute_group_name {
+	font-size: 19px;
+	font-family: 'playfair_displayblack';
+	color: #000;
+	text-transform: uppercase;
+	border-bottom: 1px solid #d7aeaa;
 	display: block;
-	color: #414141;
-	font-weight: 400;
-	margin: 0px 0 5px;
-	display:inline-block;
-	top:1px;
-	position:relative;
+	padding: 10px 20px 10px 20px;
 }
 #filterpro .attribute_group_name{
     padding-left: 0;
@@ -158,7 +187,13 @@
 	margin-left:0px;
 }
 #filterpro .option_box label {
+	color:#000;
+	font-size:15px;
 	font-weight: 300;
+	cursor:pointer;
+}
+#filterpro .option_box label.selected {
+	color:#f1524c;
 }
 #filterpro .hided {
     background: url("../image/filter-bullet-down.png") no-repeat scroll right center transparent;
@@ -171,6 +206,7 @@
     float: right;
 	line-height: 11px;
 	font-size: 10px;
+	cursor:pointer;
 	color: #666!important;
 }
 .clear_filter:hover, .clear_filter:visited, .clear_filter:active {
@@ -230,8 +266,7 @@
 	outline: 0px!important;
 }
 #filterpro .attribute_box {
-	border-left:1px solid #e6d6d6;
-	text-align:right;
+
 }
 #filterpro .row .attribute_box:first-child {
 	border:none;
@@ -280,5 +315,10 @@
 	}
 	#filterpro .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
 		width: 100%;
+	}
+}
+@media (min-width: 768px) {
+	.filterProPanel {
+		margin-top: 70px;
 	}
 }

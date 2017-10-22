@@ -10,3 +10,8 @@ WHERE o.del_info = '' AND op.del_info != '';
 update product set points = price;
 DELETE FROM `product_reward`;
 INSERT INTO product_reward (product_id, customer_group_id, points) SELECT product_id, 1, price/10 FROM product;
+
+ALTER TABLE  `banner_image_description` CHANGE  `title`  `title` VARCHAR( 512 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;
+
+
+UPDATE  `product` SET  `manufacturer_id` =  '0';

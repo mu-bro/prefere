@@ -2,7 +2,7 @@
 
 class ModelTotalShipping extends Model {
     public function getTotal(&$total_data, &$total, &$taxes) {
-        if (isset($this->session->data['shipping_methods'])) {
+        if (isset($this->session->data['shipping_methods']) && isset($this->session->data['delInfo'])) {
 
             $delInfo = $this->session->data['delInfo'];
             if (isset($delInfo['shipping_method']['code'])) {
